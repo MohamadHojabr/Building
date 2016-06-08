@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using Building.Models;
 using Building.Providers;
 using Building.Results;
+using DomainClasses.Models;
 
 namespace Building.Controllers
 {
