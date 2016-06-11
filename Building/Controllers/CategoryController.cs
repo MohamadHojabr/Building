@@ -8,7 +8,7 @@ using ServiceLayer.IService;
 
 namespace Building.Controllers
 {
-    public class CategoryController : Controller
+    public partial class CategoryController : Controller
     {
         private IUnitOfWork _uow;
         private ICategoryService _categoryService;
@@ -20,7 +20,7 @@ namespace Building.Controllers
         }
 
         // GET: Category
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             var list = _categoryService.GetAllCategory();
             return View(list);

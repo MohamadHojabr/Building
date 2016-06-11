@@ -43,6 +43,23 @@ namespace T4MVC
             }
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
+            static readonly _AdminClass s_Admin = new _AdminClass();
+            public _AdminClass Admin { get { return s_Admin; } }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public partial class _AdminClass
+            {
+                static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+                public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+                public class _ViewNamesClass
+                {
+                    public readonly string _ScriptsPartialPage = "_ScriptsPartialPage";
+                    public readonly string _StylesPartialPage = "_StylesPartialPage";
+                    public readonly string AdminLayuot = "AdminLayuot";
+                }
+                public readonly string _ScriptsPartialPage = "~/Views/Shared/Admin/_ScriptsPartialPage.cshtml";
+                public readonly string _StylesPartialPage = "~/Views/Shared/Admin/_StylesPartialPage.cshtml";
+                public readonly string AdminLayuot = "~/Views/Shared/Admin/AdminLayuot.cshtml";
+            }
         }
     }
 
