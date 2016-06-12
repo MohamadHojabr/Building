@@ -1,5 +1,8 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using System.Web.UI.WebControls;
+using Content = Links.Content;
+using Scripts = Links.Scripts;
 
 namespace Building
 {
@@ -24,7 +27,7 @@ namespace Building
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/admin/css")
+            bundles.Add(new StyleBundle("~/admin/css")
     .Include(
                 "~" + Links.Content.AdminTheme.dist.css.ace_min_css,
                 "~" + Links.Content.AdminTheme.dist.css.ace_rtl_min_css,
@@ -46,7 +49,46 @@ namespace Building
                 "~" + Links.Content.AdminTheme.dist.css.dropzone_min_css,
                 "~" + Links.Content.AdminTheme.dist.css.prettify_min_css,
                 "~" + Links.Content.AdminTheme.dist.css.select2_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.ui_jqgrid_min_css
+                "~" + Links.Content.AdminTheme.dist.css.ui_jqgrid_min_css,
+                "~/fonts/font-awesome-4.6.3/css/font-awesome.min.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/admin/script").Include(
+                "~" + Content.AdminTheme.dist.js.jquery_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_ui_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_ui_custom_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_ui_touch_punch_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_bootstrap_duallistbox_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_colorbox_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_easypiechart_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_gritter_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_hotkeys_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_inputlimiter_1_3_1_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_knob_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_maskedinput_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_mobile_custom_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_nestable_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_validate_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_raty_min_js,
+                "~" + Content.AdminTheme.dist.js.jquery_sparkline_min_js,
+                "~" + Content.AdminTheme.dist.js.bootstrap_colorpicker_min_js,
+                "~" + Content.AdminTheme.dist.js.bootstrap_multiselect_min_js,
+                "~" + Content.AdminTheme.dist.js.bootstrap_tag_min_js,
+                "~" + Content.AdminTheme.dist.js.bootstrap_wysiwyg_min_js,
+                "~" + Content.AdminTheme.dist.js.bootbox_min_js,
+                "~" + Content.AdminTheme.dist.js.additional_methods_min_js,
+                "~" + Content.AdminTheme.dist.js.autosize_min_js,
+                "~" + Content.AdminTheme.dist.js.chosen_jquery_min_js,
+                "~" + Content.AdminTheme.dist.js.dropzone_min_js,
+                "~" + Content.AdminTheme.dist.js.prettify_min_js,
+                "~" + Content.AdminTheme.dist.js.select2_min_js,
+                "~" + Content.AdminTheme.dist.js.spin_min_js,
+                "~" + Content.AdminTheme.dist.js.typeahead_jquery_min_js,
+                "~" + Content.AdminTheme.dist.js.ace_elements_min_js,
+                "~" + Content.AdminTheme.dist.js.ace_extra_min_js,
+                "~" + Content.AdminTheme.dist.js.ace_min_js,
+                "~" + Content.AdminTheme.dist.js.fullcalendar_min_js
+
                 ));
 
             //BundleTable.EnableOptimizations = true;
