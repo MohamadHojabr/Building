@@ -226,6 +226,7 @@ namespace Links
                     public static readonly string bootstrap_multiselect_min_js = Url("bootstrap-multiselect.min.js");
                     public static readonly string bootstrap_tag_min_js = Url("bootstrap-tag.min.js");
                     public static readonly string bootstrap_wysiwyg_min_js = Url("bootstrap-wysiwyg.min.js");
+                    public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
                     public static readonly string chosen_jquery_min_js = Url("chosen.jquery.min.js");
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
                     public static class dataTables {
@@ -603,6 +604,7 @@ namespace Links
                             public const string bootstrap_multiselect_min_js = "~/Content/AdminTheme/dist/js/bootstrap-multiselect.min.js"; 
                             public const string bootstrap_tag_min_js = "~/Content/AdminTheme/dist/js/bootstrap-tag.min.js"; 
                             public const string bootstrap_wysiwyg_min_js = "~/Content/AdminTheme/dist/js/bootstrap-wysiwyg.min.js"; 
+                            public const string bootstrap_min_js = "~/Content/AdminTheme/dist/js/bootstrap.min.js"; 
                             public const string chosen_jquery_min_js = "~/Content/AdminTheme/dist/js/chosen.jquery.min.js"; 
                             public const string dropzone_min_js = "~/Content/AdminTheme/dist/js/dropzone.min.js"; 
                             public const string fullcalendar_min_js = "~/Content/AdminTheme/dist/js/fullcalendar.min.js"; 

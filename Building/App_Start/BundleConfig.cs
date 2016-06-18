@@ -27,6 +27,11 @@ namespace Building
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/admin/component/css").Include(
+
+    ));
+
+
             bundles.Add(new StyleBundle("~/admin/css")
     .Include(
                 "~" + Links.Content.AdminTheme.dist.css.ace_min_css,
@@ -53,8 +58,40 @@ namespace Building
                 "~/fonts/font-awesome-4.6.3/css/font-awesome.min.css"
                 ));
 
+            bundles.Add(new ScriptBundle("~/admin/common/script").Include(
+                 "~" + Content.AdminTheme.dist.js.jquery_min_js,
+                 "~" + Content.AdminTheme.dist.js.bootstrap_min_js
+                ));
+
+            bundles.Add(new ScriptBundle("~/admin/component/js").Include(
+                //X_EDITABLE
+                "~" + Content.AdminTheme.dist.js.x_editable.bootstrap_editable_min_js,
+                "~" + Content.AdminTheme.dist.js.x_editable.ace_editable_min_js,
+                //DATA_TIME
+                "~" + Content.AdminTheme.dist.js.date_time.moment_min_js,
+                "~" + Content.AdminTheme.dist.js.date_time.bootstrap_datepicker_min_js,
+                "~" + Content.AdminTheme.dist.js.date_time.bootstrap_datetimepicker_min_js,
+                "~" + Content.AdminTheme.dist.js.date_time.bootstrap_timepicker_min_js,
+                "~" + Content.AdminTheme.dist.js.date_time.daterangepicker_min_js,
+                //DATA_TABLE
+                "~" + Content.AdminTheme.dist.js.dataTables.jquery_dataTables_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.jquery_dataTables_bootstrap_min_js,
+                //FLOAT
+                "~" + Content.AdminTheme.dist.js.flot.jquery_flot_min_js,
+                "~" + Content.AdminTheme.dist.js.flot.jquery_flot_pie_min_js,
+                "~" + Content.AdminTheme.dist.js.flot.jquery_flot_resize_min_js,
+                //FUELUX
+                "~" + Content.AdminTheme.dist.js.fuelux.fuelux_spinner_min_js,
+                "~" + Content.AdminTheme.dist.js.fuelux.fuelux_tree_min_js,
+                "~" + Content.AdminTheme.dist.js.fuelux.fuelux_wizard_min_js,
+                //JQGRIDE
+                "~" + Content.AdminTheme.dist.js.jqGrid.jquery_jqGrid_min_js,
+                //MARK_DOWN
+                "~" + Content.AdminTheme.dist.js.markdown.markdown_min_js,
+                "~" + Content.AdminTheme.dist.js.markdown.bootstrap_markdown_min_js
+                ));
+
             bundles.Add(new ScriptBundle("~/admin/script").Include(
-                "~" + Content.AdminTheme.dist.js.jquery_min_js,
                 "~" + Content.AdminTheme.dist.js.jquery_ui_min_js,
                 "~" + Content.AdminTheme.dist.js.jquery_ui_custom_min_js,
                 "~" + Content.AdminTheme.dist.js.jquery_ui_touch_punch_min_js,
@@ -71,6 +108,7 @@ namespace Building
                 "~" + Content.AdminTheme.dist.js.jquery_validate_min_js,
                 "~" + Content.AdminTheme.dist.js.jquery_raty_min_js,
                 "~" + Content.AdminTheme.dist.js.jquery_sparkline_min_js,
+                "~" + Content.AdminTheme.dist.js.fullcalendar_min_js,
                 "~" + Content.AdminTheme.dist.js.bootstrap_colorpicker_min_js,
                 "~" + Content.AdminTheme.dist.js.bootstrap_multiselect_min_js,
                 "~" + Content.AdminTheme.dist.js.bootstrap_tag_min_js,
@@ -86,8 +124,7 @@ namespace Building
                 "~" + Content.AdminTheme.dist.js.typeahead_jquery_min_js,
                 "~" + Content.AdminTheme.dist.js.ace_elements_min_js,
                 "~" + Content.AdminTheme.dist.js.ace_extra_min_js,
-                "~" + Content.AdminTheme.dist.js.ace_min_js,
-                "~" + Content.AdminTheme.dist.js.fullcalendar_min_js
+                "~" + Content.AdminTheme.dist.js.ace_min_js
 
                 ));
 

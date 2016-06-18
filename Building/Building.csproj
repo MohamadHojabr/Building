@@ -355,6 +355,7 @@
     <Content Include="Content\AdminTheme\dist\js\bootstrap-multiselect.min.js" />
     <Content Include="Content\AdminTheme\dist\js\bootstrap-tag.min.js" />
     <Content Include="Content\AdminTheme\dist\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="Content\AdminTheme\dist\js\bootstrap.min.js" />
     <Content Include="Content\AdminTheme\dist\js\chosen.jquery.min.js" />
     <Content Include="Content\AdminTheme\dist\js\dataTables\extensions\buttons\buttons.colVis.min.js" />
     <Content Include="Content\AdminTheme\dist\js\dataTables\extensions\buttons\buttons.flash.min.js" />
