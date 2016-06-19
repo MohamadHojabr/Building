@@ -13,15 +13,15 @@ namespace ServiceLayer.EfService
     public class EfCategoryService : ICategoryService
     {
         IUnitOfWork _ouw;
-        readonly IDbSet<Category> _category;
+        readonly IDbSet<MainCategory> _category;
 
         public EfCategoryService(IUnitOfWork ouw)
         {
             _ouw = ouw;
-            _category = _ouw.Set<Category>();
+            _category = _ouw.Set<MainCategory>();
         }
 
-        public IEnumerable<Category> GetAllCategory()
+        public IEnumerable<MainCategory> GetAllCategory()
         {
             var list = _category;
             return list;

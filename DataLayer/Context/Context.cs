@@ -30,7 +30,7 @@ namespace Building.Models
         }
 
 
-        public DbSet<Category> Categories { set; get; }
+        public DbSet<MainCategory> Categories { set; get; }
 
 
         #region IUnitOfWork Members

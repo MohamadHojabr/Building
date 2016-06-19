@@ -9,6 +9,6 @@ namespace ServiceLayer.IService
 {
     public interface ICategoryService
     {
-        IEnumerable<Category> GetAllCategory();
+        IEnumerable<MainCategory> GetAllCategory();
     }
 }

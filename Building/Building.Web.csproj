@@ -530,17 +530,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+    <ProjectReference Include="..\DataLayer\Buolding.DataLayer.csproj">
       <Project>{F66376ED-BA4F-431B-9701-F9FFEF697226}</Project>
-      <Name>DataLayer</Name>
+      <Name>Buolding.DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DomainClasses\DomainClasses.csproj">
+    <ProjectReference Include="..\DomainClasses\Buolding.DomainClasses.csproj">
       <Project>{5ED1CB19-D5BE-4B04-8EB3-F4197AE3CBB1}</Project>
-      <Name>DomainClasses</Name>
+      <Name>Buolding.DomainClasses</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
+    <ProjectReference Include="..\ServiceLayer\Buolding.Service.csproj">
       <Project>{7a59f084-8201-499b-9865-54affa865937}</Project>
-      <Name>ServiceLayer</Name>
+      <Name>Buolding.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
