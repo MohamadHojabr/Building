@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\MainCategory.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +69,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Buolding.Utility\Buolding.Utility.csproj">
+      <Project>{FED9631A-EC4D-4296-9C78-AF2DD1899D0F}</Project>
+      <Name>Buolding.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
