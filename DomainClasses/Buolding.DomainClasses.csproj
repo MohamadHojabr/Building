@@ -57,13 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ProfileType.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\CompanyProfile.cs" />
     <Compile Include="Models\MainCategory.cs" />
-    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\PersonalProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Enums\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>

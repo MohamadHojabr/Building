@@ -18,5 +18,11 @@ namespace DomainClasses.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string Email { get; set; }
+
+        public virtual CompanyProfile CompanyProfile { get; set; }
+        public virtual PersonalProfile PersonalProfile { get; set; }
+
     }
 }

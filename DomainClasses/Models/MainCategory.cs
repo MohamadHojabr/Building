@@ -39,7 +39,7 @@ namespace DomainClasses.Models
         public virtual MainCategory Parent { get; set; }
         public virtual ICollection<MainCategory> Children { get; set; }
 
-        public virtual ICollection<Profile> Profile { get; set; }
+        public virtual ICollection<PersonalProfile> Profile { get; set; }
 
         #endregion
     }
