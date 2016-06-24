@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Buolding.Utility;
 using DomainClasses.Enums;
@@ -24,9 +25,17 @@ namespace DomainClasses.Models
         [Key]
         public Guid ContactId { get; set; }
 
+        [Required(ErrorMessage = "لطفا پیش شماره را وارد کنید")]
+        [DisplayName("پیش شماره")]
         public int AreaCode { get; set; }
+        [Required(ErrorMessage = "لطفا شماره را وارد کنید")]
+        [DisplayName("شماره")]
         public int Number { get; set; }
+        [Required(ErrorMessage = "لطفا محل را انتخاب کنید")]
+        [DisplayName("تلفن محل")]
         public LocationType LocationType { get; set; }
+        [Required(ErrorMessage = "لطفا محل را انتخاب کنید")]
+        [DisplayName("تلفن محل")]
         public PhoneType PhoneType { get; set; }
 
         #endregion

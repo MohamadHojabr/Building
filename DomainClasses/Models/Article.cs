@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using Buolding.Utility;
 
 namespace DomainClasses.Models
@@ -23,10 +25,17 @@ namespace DomainClasses.Models
 
         [Key]
         public Guid ArticleId { get; set; }
-
+        [Required(ErrorMessage = "لطفا نام مقاله را وارد کنید")]
+        [DisplayName("نام مقاله")]
+        [MaxLength(256)]
         public string Name { get; set; }
+        [DisplayName("خلاصه مقاله")]
         public string Summary { get; set; }
+        [Required(ErrorMessage = "لطفا متن مقاله را وارد کنید")]
+        [DisplayName("متن مقاله")]
+        [AllowHtml]
         public string ArticleText { get; set; }
+        [DisplayName("منابع مقاله")]
         public string ArticleSource { get; set; }
         public int Rate { get; set; }
         public string ThumbnailImage { get; set; }

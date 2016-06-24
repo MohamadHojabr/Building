@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Buolding.Utility;
 using DomainClasses.Enums;
@@ -24,10 +25,18 @@ namespace DomainClasses.Models
 
         [Key]
         public Guid AddressId { get; set; }
-
+        [Required(ErrorMessage = "لطفا محل را انتخاب کنید")]
+        [DisplayName("آدرس محل")]
         public LocationType LocationType { get; set; }
+        [Required(ErrorMessage = "لطفا استان را انتخاب کنید")]
+        [DisplayName("استان")]
+        [MaxLength(256)]
         public string State { get; set; }
+        [Required(ErrorMessage = "لطفا شهر را انتخاب کنید")]
+        [DisplayName("شهر")]
+        [MaxLength(256)]
         public string City { get; set; }
+        [MaxLength(1024)]
         public string CompleteAddress { get; set; }
 
         #endregion
