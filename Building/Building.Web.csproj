@@ -289,6 +289,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\IranCities.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\AdminTheme\1.3.4.html" />
     <Content Include="Content\AdminTheme\1.3.4_2.html" />
@@ -516,7 +517,11 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Uploads\Article\" />
+    <Folder Include="Uploads\ImageGallery\" />
+    <Folder Include="Uploads\Portfolio\" />
+    <Folder Include="Uploads\Project\" />
+    <Folder Include="Uploads\VideoGallery\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

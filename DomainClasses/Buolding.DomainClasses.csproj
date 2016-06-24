@@ -57,11 +57,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Enums\AcademicDegrees.cs" />
+    <Compile Include="Enums\LocationType.cs" />
+    <Compile Include="Enums\PhoneType.cs" />
     <Compile Include="Enums\ProfileType.cs" />
+    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleFile.cs" />
+    <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\CompanyProfile.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ImageGallery.cs" />
+    <Compile Include="Models\ImageGalleryFile.cs" />
     <Compile Include="Models\MainCategory.cs" />
     <Compile Include="Models\PersonalProfile.cs" />
+    <Compile Include="Models\Portfolio.cs" />
+    <Compile Include="Models\PortfolioFile.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductFile.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectFile.cs" />
+    <Compile Include="Models\Temp.cs" />
+    <Compile Include="Models\UseLocation.cs" />
+    <Compile Include="Models\VideoGallery.cs" />
+    <Compile Include="Models\VideoGalleryFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Building.Common\Building.Common.csproj">
+      <Project>{C8B304FF-2730-44DE-960B-9356C48B88E5}</Project>
+      <Name>Building.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Buolding.Utility\Buolding.Utility.csproj">
       <Project>{FED9631A-EC4D-4296-9C78-AF2DD1899D0F}</Project>
       <Name>Buolding.Utility</Name>

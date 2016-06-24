@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using DomainClasses.Enums;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -23,6 +24,7 @@ namespace DomainClasses.Models
 
         public virtual CompanyProfile CompanyProfile { get; set; }
         public virtual PersonalProfile PersonalProfile { get; set; }
-
+        public string FieldOfStudy { get; set; }
+        public AcademicDegrees AcademicDegrees { get; set; }
     }
 }
