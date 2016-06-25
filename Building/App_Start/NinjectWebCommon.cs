@@ -67,7 +67,7 @@ namespace Building.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IUnitOfWork>().To<ApplicationDbContext>().InRequestScope();
-            kernel.Bind<ICategoryService>().To<EfCategoryService>().InRequestScope();
+            //kernel.Bind<ICategoryService>().To<EfCategoryService>().InRequestScope();
 
         }
     }

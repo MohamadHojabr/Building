@@ -9,7 +9,7 @@ using Buolding.Utility;
 
 namespace DomainClasses.Models
 {
-    class Temp
+    public class Temp
     {
         #region Ctor
         /// <summary>

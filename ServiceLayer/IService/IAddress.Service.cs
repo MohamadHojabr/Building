@@ -7,8 +7,11 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface ICategoryService
+    public interface IAddress
     {
-        IEnumerable<MainCategory> GetAllCategory();
+        void AddOrUpdate(Address address);
+        void Delete(Address address);
+        Address Find(int id);
+        IList<Address> GetAll();
     }
 }
