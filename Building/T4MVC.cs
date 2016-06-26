@@ -29,8 +29,8 @@ public static partial class MVC
 {
     static readonly HelpPageClass s_HelpPage = new HelpPageClass();
     public static HelpPageClass HelpPage { get { return s_HelpPage; } }
-    public static Building.Controllers.CategoryController Category = new Building.Controllers.T4MVC_CategoryController();
     public static Building.Controllers.HomeController Home = new Building.Controllers.T4MVC_HomeController();
+    public static T4MVC.CategoryController Category = new T4MVC.CategoryController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

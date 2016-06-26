@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Building.Web", "Building\Building.Web.csproj", "{203B5271-85E6-49BB-BA4C-0954EED89056}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buolding.Utility", "Buolding.Utility\Buolding.Utility.csproj", "{FED9631A-EC4D-4296-9C78-AF2DD1899D0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Building.Common", "Building.Common\Building.Common.csproj", "{C8B304FF-2730-44DE-960B-9356C48B88E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Building.ViewModels", "Building.ViewModels\Building.ViewModels.csproj", "{4C72DCD5-7837-402A-A92C-17A98B495C4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C8B304FF-2730-44DE-960B-9356C48B88E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8B304FF-2730-44DE-960B-9356C48B88E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8B304FF-2730-44DE-960B-9356C48B88E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C72DCD5-7837-402A-A92C-17A98B495C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C72DCD5-7837-402A-A92C-17A98B495C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C72DCD5-7837-402A-A92C-17A98B495C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C72DCD5-7837-402A-A92C-17A98B495C4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

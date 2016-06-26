@@ -20,8 +20,6 @@ namespace DomainClasses.Models
             return userIdentity;
         }
 
-        public string Email { get; set; }
-
         public virtual CompanyProfile CompanyProfile { get; set; }
         public virtual PersonalProfile PersonalProfile { get; set; }
         public string FieldOfStudy { get; set; }
