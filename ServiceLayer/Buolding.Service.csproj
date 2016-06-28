@@ -54,13 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\Buolding.DataLayer.csproj">
+    <ProjectReference Include="..\DataLayer\Building.DataLayer.csproj">
       <Project>{F66376ED-BA4F-431B-9701-F9FFEF697226}</Project>
-      <Name>Buolding.DataLayer</Name>
+      <Name>Building.DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DomainClasses\Buolding.DomainClasses.csproj">
+    <ProjectReference Include="..\DomainClasses\Building.DomainClasses.csproj">
       <Project>{5ED1CB19-D5BE-4B04-8EB3-F4197AE3CBB1}</Project>
-      <Name>Buolding.DomainClasses</Name>
+      <Name>Building.DomainClasses</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

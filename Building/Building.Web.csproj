@@ -257,10 +257,9 @@
     <Compile Include="CategoryController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\WebApiAccountController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -515,18 +514,6 @@
     <Content Include="Views\Shared\Admin\_ScriptsPartialPage.cshtml" />
     <Content Include="Views\Shared\Admin\AdminLayuot.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\Article\" />
@@ -551,13 +538,13 @@
       <Project>{4C72DCD5-7837-402A-A92C-17A98B495C4C}</Project>
       <Name>Building.ViewModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataLayer\Buolding.DataLayer.csproj">
+    <ProjectReference Include="..\DataLayer\Building.DataLayer.csproj">
       <Project>{F66376ED-BA4F-431B-9701-F9FFEF697226}</Project>
-      <Name>Buolding.DataLayer</Name>
+      <Name>Building.DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DomainClasses\Buolding.DomainClasses.csproj">
+    <ProjectReference Include="..\DomainClasses\Building.DomainClasses.csproj">
       <Project>{5ED1CB19-D5BE-4B04-8EB3-F4197AE3CBB1}</Project>
-      <Name>Buolding.DomainClasses</Name>
+      <Name>Building.DomainClasses</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceLayer\Buolding.Service.csproj">
       <Project>{7a59f084-8201-499b-9865-54affa865937}</Project>

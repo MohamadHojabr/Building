@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Building.Providers;
 using Building.Models;
+using DataLayer.Context;
 
 namespace Building
 {
