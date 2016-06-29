@@ -9,7 +9,7 @@ namespace DataLayer.Context
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IUnitOfWork
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Context", throwIfV1Schema: false)
         {
         }
         
@@ -25,12 +25,28 @@ namespace DataLayer.Context
 
         }
 
-
         public DbSet<MainCategory> Categories { set; get; }
+        public DbSet<Address> Addresses { set; get; }
+        public DbSet<Article> Articles { set; get; }
+        public DbSet<ArticleFile> ArticleFiles { set; get; }
+        public DbSet<Brand> Brands { set; get; }
+        public DbSet<CompanyProfile> CompanyProfiles { set; get; }
+        public DbSet<Contact> Contacts { set; get; }
+        public DbSet<ImageGallery> ImageGalleries { set; get; }
+        public DbSet<ImageGalleryFile> ImageGalleryFiles { set; get; }
+        public DbSet<PersonalProfile> PersonalProfiles { set; get; }
+        public DbSet<Portfolio> Portfolios { set; get; }
+        public DbSet<PortfolioFile> PortfolioFiles { set; get; }
+        public DbSet<Product> Products { set; get; }
+        public DbSet<ProductFile> ProductFiles { set; get; }
+        public DbSet<Project> Projects { set; get; }
+        public DbSet<ProjectFile> ProjectFiles { set; get; }
+        public DbSet<UseLocation> UserLocations { set; get; }
+        public DbSet<VideoGallery> VideoGalleries { set; get; }
+        public DbSet<VideoGalleryFile> VideoGalleryFiles { set; get; }
 
-
-        #region IUnitOfWork Members
-        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
+    #region IUnitOfWork Members
+    public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             return base.Set<TEntity>();
         }

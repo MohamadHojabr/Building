@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Building.Web.Mvc.Models;
+using DataLayer.Context;
+using DomainClasses.Models;
 
 namespace Building.Web.Mvc
 {

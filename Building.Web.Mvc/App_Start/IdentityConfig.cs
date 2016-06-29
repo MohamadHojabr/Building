@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Building.Web.Mvc.Models;
+using DataLayer.Context;
+using DomainClasses.Models;
 
 namespace Building.Web.Mvc
 {
