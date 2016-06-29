@@ -492,6 +492,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Building.Common\Building.Common.csproj">
+      <Project>{C8B304FF-2730-44DE-960B-9356C48B88E5}</Project>
+      <Name>Building.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\Building.DataLayer.csproj">
       <Project>{f66376ed-ba4f-431b-9701-f9ffef697226}</Project>
       <Name>Building.DataLayer</Name>

@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Building.Common.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -72,7 +73,17 @@ namespace Building.Web.Mvc.Controllers
             {
                 return View(model);
             }
-
+            if (ModelState.IsValid)
+            {
+                var profileData = new UserProfileSessionData
+                {
+                    //UserId = model.Email,
+                    EmailAddress = model.Email,
+                    FullName = model.Email
+                };
+            this.Session["UserProfile"] = profileData;
+            }
+            
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
