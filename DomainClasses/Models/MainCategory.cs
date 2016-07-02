@@ -46,7 +46,7 @@ namespace DomainClasses.Models
         public int? ParentId { get; set; }
         public virtual MainCategory Parent { get; set; }
         public virtual ICollection<MainCategory> Children { get; set; }
-        public virtual ICollection<PersonalProfile> Profile { get; set; }
+        public virtual ICollection<PersonalProfile> PersonalProfiles { get; set; }
         public virtual ICollection<CompanyProfile> CompanyProfiles { get; set; }
 
         #endregion

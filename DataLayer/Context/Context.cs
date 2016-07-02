@@ -23,6 +23,28 @@ namespace DataLayer.Context
 
             base.OnModelCreating(modelBuilder);
 
+            // Configure CompanyProfile & RelatedUser entity
+            modelBuilder.Entity<CompanyProfile>()
+                        .HasOptional(s => s.RelatedUser) // Mark RelatedUser property optional in CompanyProfile entity
+                        .WithRequired(ad => ad.CompanyProfile); // mark RelatedUser property as required in CompanyProfile entity. Cannot save CompanyProfile without Student
+
+            modelBuilder.Entity<PersonalProfile>()
+            .HasOptional(s => s.RelatedUser) 
+            .WithRequired(ad => ad.PersonalProfile);
+
+            modelBuilder.Entity<PersonalProfile>()
+    .HasRequired(d => d.MainCategory)
+    .WithMany()
+    .HasForeignKey(d => d.MainCategoryId)
+    .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CompanyProfile>()
+.HasRequired(d => d.MainCategory)
+.WithMany()
+.HasForeignKey(d => d.MainCategoryId)
+.WillCascadeOnDelete(false);
+
+
         }
 
         public DbSet<MainCategory> Categories { set; get; }

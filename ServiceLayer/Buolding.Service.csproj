@@ -50,7 +50,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EfService\EfAddress.Service.cs" />
+    <Compile Include="EfService\EfArticle.Service.cs" />
+    <Compile Include="EfService\EfBrand.Service.cs" />
+    <Compile Include="EfService\EfCompanyProfile.Service.cs" />
+    <Compile Include="EfService\EfContact.Service.cs" />
+    <Compile Include="EfService\EfImageGallery.Service.cs" />
+    <Compile Include="EfService\EfMainCategory.Service.cs" />
+    <Compile Include="EfService\EfPersonalProfile.Service.cs" />
+    <Compile Include="EfService\EfPortfolio.Service.cs" />
+    <Compile Include="EfService\EfProduct.Service.cs" />
+    <Compile Include="EfService\EfProject.Service.cs" />
+    <Compile Include="IService\ICompanyProfile.Service.cs" />
+    <Compile Include="IService\IContact.Service.cs" />
+    <Compile Include="IService\IImageGallery.Service.cs" />
+    <Compile Include="IService\IMainCategory.Service.cs" />
+    <Compile Include="IService\IPersonalProfile.Service.cs" />
+    <Compile Include="IService\IPortfolio.Service.cs" />
+    <Compile Include="IService\IProduct.Service.cs" />
+    <Compile Include="IService\IProject.Service.cs" />
     <Compile Include="IService\ITemp.Service.cs" />
+    <Compile Include="IService\IUseLocation.Service.cs" />
+    <Compile Include="IService\IVideoGallery.Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +87,7 @@
     <None Include="App.config" />
     <Compile Include="IService\IAddress.Service.cs" />
     <Compile Include="IService\IBrand.Service.cs" />
+    <Compile Include="IService\IArticle.Service.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

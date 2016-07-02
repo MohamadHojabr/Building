@@ -56,8 +56,6 @@ namespace DomainClasses.Models
 
         #region NavigationProperties
 
-        public string RelatedUserId { get; set; }
-        [ForeignKey("RelatedUserId")]
         public virtual ApplicationUser RelatedUser { get; set; }
         public Guid MainCategoryId { get; set; }
         public virtual MainCategory MainCategory { get; set; }
