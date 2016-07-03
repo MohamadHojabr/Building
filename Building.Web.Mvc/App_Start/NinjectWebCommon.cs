@@ -1,5 +1,7 @@
 using DomainClasses.Models;
 using DataLayer.Context;
+using ServiceLayer.EfService;
+using ServiceLayer.IService;
 
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Building.Web.Mvc.App_Start.NinjectWebCommon), "Start")]
@@ -66,7 +68,21 @@ namespace Building.Web.Mvc.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IUnitOfWork>().To<ApplicationDbContext>().InRequestScope();
-
+            kernel.Bind<IAddress>().To<EfAddress>().InRequestScope();
+            kernel.Bind<IArticle>().To<EfArticle>().InRequestScope();
+            kernel.Bind<IBrand>().To<EfBrand>().InRequestScope();
+            kernel.Bind<ICity>().To<EfCity>().InRequestScope();
+            kernel.Bind<ICompanyProfile>().To<EfCompanyProfile>().InRequestScope();
+            kernel.Bind<IContact>().To<EfContact>().InRequestScope();
+            kernel.Bind<IImageGallery>().To<EfImageGallery>().InRequestScope();
+            kernel.Bind<IMainCategory>().To<EfMainCategory>().InRequestScope();
+            kernel.Bind<IPersonalProfile>().To<EfPersonalProfile>().InRequestScope();
+            kernel.Bind<IPortfolio>().To<EfPortfolio>().InRequestScope();
+            kernel.Bind<IProduct>().To<EfProduct>().InRequestScope();
+            kernel.Bind<IProject>().To<EfProject>().InRequestScope();
+            kernel.Bind<IState>().To<EfState>().InRequestScope();
+            kernel.Bind<IUseLocation>().To<EfUseLocation>().InRequestScope();
+            kernel.Bind<IVideoGallery>().To<EfVideoGallery>().InRequestScope();
         }
     }
 }
