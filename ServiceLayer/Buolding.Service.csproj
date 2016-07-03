@@ -38,9 +38,38 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +81,7 @@
     <Compile Include="EfService\EfAddress.Service.cs" />
     <Compile Include="EfService\EfArticle.Service.cs" />
     <Compile Include="EfService\EfBrand.Service.cs" />
+    <Compile Include="EfService\EfCity.Service.cs" />
     <Compile Include="EfService\EfCompanyProfile.Service.cs" />
     <Compile Include="EfService\EfContact.Service.cs" />
     <Compile Include="EfService\EfImageGallery.Service.cs" />
@@ -60,6 +90,7 @@
     <Compile Include="EfService\EfPortfolio.Service.cs" />
     <Compile Include="EfService\EfProduct.Service.cs" />
     <Compile Include="EfService\EfProject.Service.cs" />
+    <Compile Include="EfService\EfState.Service.cs" />
     <Compile Include="EfService\EfUseLocation.Service.cs" />
     <Compile Include="EfService\EfVideoGallery.Service.cs" />
     <Compile Include="IService\ICompanyProfile.Service.cs" />
@@ -70,12 +101,18 @@
     <Compile Include="IService\IPortfolio.Service.cs" />
     <Compile Include="IService\IProduct.Service.cs" />
     <Compile Include="IService\IProject.Service.cs" />
+    <Compile Include="IService\IState.Service.cs" />
     <Compile Include="IService\ITemp.Service.cs" />
     <Compile Include="IService\IUseLocation.Service.cs" />
     <Compile Include="IService\IVideoGallery.Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\OwnConstants.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Building.Common\Building.Common.csproj">
+      <Project>{C8B304FF-2730-44DE-960B-9356C48B88E5}</Project>
+      <Name>Building.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\Building.DataLayer.csproj">
       <Project>{F66376ED-BA4F-431B-9701-F9FFEF697226}</Project>
       <Name>Building.DataLayer</Name>
@@ -90,8 +127,10 @@
     <Compile Include="IService\IAddress.Service.cs" />
     <Compile Include="IService\IBrand.Service.cs" />
     <Compile Include="IService\IArticle.Service.cs" />
+    <Compile Include="IService\ICity.Service.cs" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extentions\ConvertExtentions.cs" />
+    <Compile Include="Extentions\TypeExtentions.cs" />
     <Compile Include="Helpers\PersianDate.cs" />
     <Compile Include="Helpers\PersianDateExtensionMethods.cs" />
     <Compile Include="Helpers\UserProfileSessionData.cs" />
