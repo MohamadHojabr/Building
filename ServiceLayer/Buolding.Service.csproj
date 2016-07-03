@@ -60,6 +60,8 @@
     <Compile Include="EfService\EfPortfolio.Service.cs" />
     <Compile Include="EfService\EfProduct.Service.cs" />
     <Compile Include="EfService\EfProject.Service.cs" />
+    <Compile Include="EfService\EfUseLocation.Service.cs" />
+    <Compile Include="EfService\EfVideoGallery.Service.cs" />
     <Compile Include="IService\ICompanyProfile.Service.cs" />
     <Compile Include="IService\IContact.Service.cs" />
     <Compile Include="IService\IImageGallery.Service.cs" />
