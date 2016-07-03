@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataLayer.Context;
 using DomainClasses.Models;
 using ServiceLayer.IService;
 
@@ -10,24 +13,39 @@ namespace ServiceLayer.EfService
 {
     public class EfImageGallery:IImageGallery
     {
+        IUnitOfWork _ouw;
+        IDbSet<ImageGallery> _imageGalleries;
+
+        public EfImageGallery(IUnitOfWork ouw)
+        {
+            _ouw = ouw;
+            _imageGalleries = _ouw.Set<ImageGallery>();
+        }
+
         public void AddOrUpdate(ImageGallery imageGallery)
         {
-            throw new NotImplementedException();
+            if (imageGallery == null)
+            {
+                throw new ArgumentNullException(nameof(imageGallery));
+            }
+            _imageGalleries.AddOrUpdate(imageGallery);
         }
 
         public void Delete(ImageGallery imageGallery)
         {
-            throw new NotImplementedException();
+            _imageGalleries.Remove(imageGallery);
         }
 
         public ImageGallery Find(int id)
         {
-            throw new NotImplementedException();
+            var unit = _imageGalleries.Find(id);
+            return unit;
         }
 
         public IList<ImageGallery> GetAll()
         {
-            throw new NotImplementedException();
+            var list = _imageGalleries.ToList();
+            return list;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,22 +25,28 @@ namespace ServiceLayer.EfService
 
         public void AddOrUpdate(Address address)
         {
-            throw new NotImplementedException();
+            if (address == null)
+            {
+                throw new ArgumentNullException(nameof(address));
+            }
+            _addresses.AddOrUpdate(address);
         }
 
         public void Delete(Address address)
         {
-            throw new NotImplementedException();
+            _addresses.Remove(address);
         }
 
         public Address Find(int id)
         {
-            throw new NotImplementedException();
+            var unit = _addresses.Find(id);
+            return unit;
         }
 
         public IList<Address> GetAll()
         {
-            throw new NotImplementedException();
+            var list = _addresses.ToList();
+            return list;
         }
     }
 }
