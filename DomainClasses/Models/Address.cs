@@ -36,6 +36,7 @@ namespace DomainClasses.Models
         [DisplayName("شهر")]
         [MaxLength(256)]
         public string City { get; set; }
+        [DisplayName("آدرس کامل")]
         [MaxLength(1024)]
         public string CompleteAddress { get; set; }
 
