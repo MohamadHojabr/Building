@@ -117,4 +117,10 @@ namespace Building.ViewModels.Account
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class UsercredentialsModel
+    {
+        public string Id { get; set; }
+        public string Password { get; set; }
+    }
 }

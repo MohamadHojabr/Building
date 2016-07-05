@@ -83,6 +83,7 @@ namespace Building.Web.Mvc.App_Start
             kernel.Bind<IState>().To<EfState>().InRequestScope();
             kernel.Bind<IUseLocation>().To<EfUseLocation>().InRequestScope();
             kernel.Bind<IVideoGallery>().To<EfVideoGallery>().InRequestScope();
+            kernel.Bind<IUsersManager>().To<EfUsersManager>().InRequestScope();
         }
     }
 }

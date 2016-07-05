@@ -28,12 +28,12 @@ namespace DataLayer.Context
             // Configure CompanyProfile & RelatedUser entity
             modelBuilder.Entity<CompanyProfile>()
                 .HasOptional(s => s.RelatedUser) // Mark RelatedUser property optional in CompanyProfile entity
-                .WithRequired(ad => ad.CompanyProfile);
+                .WithOptionalPrincipal(ad => ad.CompanyProfile);
                 // mark RelatedUser property as required in CompanyProfile entity. Cannot save CompanyProfile without Student
 
             modelBuilder.Entity<PersonalProfile>()
                 .HasOptional(s => s.RelatedUser)
-                .WithRequired(ad => ad.PersonalProfile);
+                .WithOptionalPrincipal(ad => ad.PersonalProfile);
 
             modelBuilder.Entity<PersonalProfile>()
                 .HasRequired(d => d.MainCategory)

@@ -425,6 +425,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Address\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ChangePassword.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -503,6 +504,10 @@
     <ProjectReference Include="..\Building.Common\Building.Common.csproj">
       <Project>{C8B304FF-2730-44DE-960B-9356C48B88E5}</Project>
       <Name>Building.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Building.ViewModels\Building.ViewModels.csproj">
+      <Project>{4C72DCD5-7837-402A-A92C-17A98B495C4C}</Project>
+      <Name>Building.ViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataLayer\Building.DataLayer.csproj">
       <Project>{f66376ed-ba4f-431b-9701-f9ffef697226}</Project>
