@@ -8,7 +8,7 @@ using ServiceLayer.IService;
 
 namespace Building.Web.Mvc.Areas.Admin.Controllers
 {
-    public class AddressController : Controller
+    public partial class AddressController : Controller
     {
         // GET: Admin/Address
         private IUnitOfWork _uow;
@@ -20,7 +20,7 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             _address = address;
         }
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             var list = _address.GetAll();
             return View(list);

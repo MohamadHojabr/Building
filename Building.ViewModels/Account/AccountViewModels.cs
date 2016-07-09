@@ -9,7 +9,7 @@ namespace Building.ViewModels.Account
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Microsoft.Build.Framework.Required]
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -22,17 +22,17 @@ namespace Building.ViewModels.Account
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }
-        //public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
         public string ReturnUrl { get; set; }
         public bool RememberMe { get; set; }
     }
 
     public class VerifyCodeViewModel
     {
-        [Microsoft.Build.Framework.Required]
+        [Required]
         public string Provider { get; set; }
 
-        [Microsoft.Build.Framework.Required]
+        [Required]
         [Display(Name = "Code")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
@@ -45,19 +45,17 @@ namespace Building.ViewModels.Account
 
     public class ForgotViewModel
     {
-        [Microsoft.Build.Framework.Required]
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Microsoft.Build.Framework.Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Microsoft.Build.Framework.Required]
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -68,31 +66,38 @@ namespace Building.ViewModels.Account
 
     public class RegisterViewModel
     {
-        [Microsoft.Build.Framework.Required]
+        [Required]
+        [Display(Name = "نقش ها")]
+        public string Name { get; set; }
+
+        [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "ایمیل")]
         public string Email { get; set; }
 
-        [Microsoft.Build.Framework.Required]
+        [Required]
+        [Display(Name = "نام کاربری")]
+        public string UserName { get; set; }
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "گذر واژه")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "تکرار گذر واژه")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
-        [Microsoft.Build.Framework.Required]
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Microsoft.Build.Framework.Required]
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -106,13 +111,9 @@ namespace Building.ViewModels.Account
         public string Code { get; set; }
     }
 
-    public class EmailAddressAttribute : Attribute
-    {
-    }
-
     public class ForgotPasswordViewModel
     {
-        [Microsoft.Build.Framework.Required]
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

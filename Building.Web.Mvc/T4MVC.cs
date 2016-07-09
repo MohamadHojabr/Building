@@ -27,7 +27,11 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    static readonly AdminClass s_Admin = new AdminClass();
+    public static AdminClass Admin { get { return s_Admin; } }
     public static Building.Web.Mvc.Controllers.AccountController Account = new Building.Web.Mvc.Controllers.T4MVC_AccountController();
+    public static Building.Web.Mvc.Controllers.AddressesController Addresses = new Building.Web.Mvc.Controllers.T4MVC_AddressesController();
+    public static Building.Web.Mvc.Controllers.ErrorController Error = new Building.Web.Mvc.Controllers.T4MVC_ErrorController();
     public static Building.Web.Mvc.Controllers.HomeController Home = new Building.Web.Mvc.Controllers.T4MVC_HomeController();
     public static Building.Web.Mvc.Controllers.ManageController Manage = new Building.Web.Mvc.Controllers.T4MVC_ManageController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
@@ -35,6 +39,15 @@ public static partial class MVC
 
 namespace T4MVC
 {
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class AdminClass
+    {
+        public readonly string Name = "Admin";
+        public Building.Web.Mvc.Areas.Admin.Controllers.AddressController Address = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_AddressController();
+        public Building.Web.Mvc.Areas.Admin.Controllers.RoleController Role = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_RoleController();
+        public Building.Web.Mvc.Areas.Admin.Controllers.UserController User = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_UserController();
+        public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
+    }
 }
 
 namespace T4MVC
@@ -152,6 +165,7 @@ namespace Links
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string ace_rtl_min_css = Url("ace-rtl.min.css");
                     public static readonly string ace_min_css = Url("ace.min.css");
+                    public static readonly string ace_overwrite_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ace.overwrite.min.css") ? Url("ace.overwrite.min.css") : Url("ace.overwrite.css");
                     public static readonly string bootstrap_datepicker3_min_css = Url("bootstrap-datepicker3.min.css");
                     public static readonly string bootstrap_datetimepicker_min_css = Url("bootstrap-datetimepicker.min.css");
                     public static readonly string bootstrap_duallistbox_min_css = Url("bootstrap-duallistbox.min.css");
@@ -178,6 +192,7 @@ namespace Links
                     private const string URLPATH = "~/Content/AdminTheme/dist/images";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string bulding_jpg = Url("bulding.jpg");
                     public static readonly string email1_png = Url("email1.png");
                     public static readonly string email2_png = Url("email2.png");
                     public static readonly string email3_png = Url("email3.png");
@@ -201,6 +216,7 @@ namespace Links
                         public static readonly string thumb_6_jpg = Url("thumb-6.jpg");
                     }
                 
+                    public static readonly string horizontal_preloader_GIF = Url("horizontal-preloader.GIF");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -394,6 +410,25 @@ namespace Links
     
         public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Plugins {
+            private const string URLPATH = "~/Content/Plugins";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class jquery_validetta {
+                private const string URLPATH = "~/Content/Plugins/jquery.validetta";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string validetta_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/validetta.min.css") ? Url("validetta.min.css") : Url("validetta.css");
+                public static readonly string validetta_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/validetta.min.js") ? Url("validetta.min.js") : Url("validetta.js");
+                public static readonly string validetta_min_css = Url("validetta.min.css");
+                public static readonly string validetta_min_js = Url("validetta.min.js");
+                public static readonly string validettaLang_fa_IR_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/validettaLang-fa-IR.min.js") ? Url("validettaLang-fa-IR.min.js") : Url("validettaLang-fa-IR.js");
+            }
+        
+        }
+    
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
     }
 
@@ -452,6 +487,7 @@ namespace Links
                         {
                             public const string ace_rtl_min_css = "~/Content/AdminTheme/dist/css/ace-rtl.min.css";
                             public const string ace_min_css = "~/Content/AdminTheme/dist/css/ace.min.css";
+                            public const string ace_overwrite_css = "~/Content/AdminTheme/dist/css/ace.overwrite.css";
                             public const string bootstrap_datepicker3_min_css = "~/Content/AdminTheme/dist/css/bootstrap-datepicker3.min.css";
                             public const string bootstrap_datetimepicker_min_css = "~/Content/AdminTheme/dist/css/bootstrap-datetimepicker.min.css";
                             public const string bootstrap_duallistbox_min_css = "~/Content/AdminTheme/dist/css/bootstrap-duallistbox.min.css";
@@ -625,6 +661,23 @@ namespace Links
                     }
                     public static class Assets
                     {
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
+            public static partial class Plugins 
+            {
+                public static partial class jquery_validetta 
+                {
+                    public static class Assets
+                    {
+                        public const string validetta_css = "~/Content/Plugins/jquery.validetta/validetta.css";
+                        public const string validetta_js = "~/Content/Plugins/jquery.validetta/validetta.js"; 
+                        public const string validetta_min_css = "~/Content/Plugins/jquery.validetta/validetta.min.css";
+                        public const string validetta_min_js = "~/Content/Plugins/jquery.validetta/validetta.min.js"; 
+                        public const string validettaLang_fa_IR_js = "~/Content/Plugins/jquery.validetta/validettaLang-fa-IR.js"; 
                     }
                 }
                 public static class Assets

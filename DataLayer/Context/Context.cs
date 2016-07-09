@@ -131,6 +131,5 @@ namespace DataLayer.Context
 
         #endregion
 
-        //public System.Data.Entity.DbSet<DomainClasses.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

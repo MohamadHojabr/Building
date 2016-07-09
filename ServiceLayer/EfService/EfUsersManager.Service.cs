@@ -26,5 +26,11 @@ namespace ServiceLayer.EfService
             var list = _users.ToList();
             return list;
         }
+
+        public ApplicationUser FindUserById(string id)
+        {
+            var unit = _users.Find(id);
+            return unit;
+        }
     }
 }

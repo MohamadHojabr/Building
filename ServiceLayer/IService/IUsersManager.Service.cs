@@ -10,5 +10,6 @@ namespace ServiceLayer.IService
     public interface IUsersManager
     {
         IList<ApplicationUser> GetAllUsers();
+        ApplicationUser FindUserById(string id);
     }
 }

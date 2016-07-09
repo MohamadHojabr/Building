@@ -213,6 +213,21 @@
     <Compile Include="AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="AddressesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.AddressController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.RoleController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.UserController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -221,10 +236,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AddressController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="ErrorController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,7 +255,6 @@
     <Compile Include="ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -269,6 +289,7 @@
     <Content Include="Content\AdminTheme\dist\avatars\user.jpg" />
     <Content Include="Content\AdminTheme\dist\css\ace-rtl.min.css" />
     <Content Include="Content\AdminTheme\dist\css\ace.min.css" />
+    <Content Include="Content\AdminTheme\dist\css\ace.overwrite.css" />
     <Content Include="Content\AdminTheme\dist\css\bootstrap-datepicker3.min.css" />
     <Content Include="Content\AdminTheme\dist\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\AdminTheme\dist\css\bootstrap-duallistbox.min.css" />
@@ -288,6 +309,7 @@
     <Content Include="Content\AdminTheme\dist\css\prettify.min.css" />
     <Content Include="Content\AdminTheme\dist\css\select2.min.css" />
     <Content Include="Content\AdminTheme\dist\css\ui.jqgrid.min.css" />
+    <Content Include="Content\AdminTheme\dist\images\bulding.jpg" />
     <Content Include="Content\AdminTheme\dist\images\email1.png" />
     <Content Include="Content\AdminTheme\dist\images\email2.png" />
     <Content Include="Content\AdminTheme\dist\images\email3.png" />
@@ -304,6 +326,7 @@
     <Content Include="Content\AdminTheme\dist\images\gallery\thumb-4.jpg" />
     <Content Include="Content\AdminTheme\dist\images\gallery\thumb-5.jpg" />
     <Content Include="Content\AdminTheme\dist\images\gallery\thumb-6.jpg" />
+    <Content Include="Content\AdminTheme\dist\images\horizontal-preloader.GIF" />
     <Content Include="Content\AdminTheme\dist\js\ace-elements.min.js" />
     <Content Include="Content\AdminTheme\dist\js\ace-extra.min.js" />
     <Content Include="Content\AdminTheme\dist\js\ace.min.js" />
@@ -400,10 +423,17 @@
     <Content Include="Content\AdminTheme\wysiwyg.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Plugins\jquery.validetta\validetta.css" />
+    <Content Include="Content\Plugins\jquery.validetta\validetta.js" />
+    <Content Include="Content\Plugins\jquery.validetta\validetta.min.css" />
+    <Content Include="Content\Plugins\jquery.validetta\validetta.min.js" />
+    <Content Include="Content\Plugins\jquery.validetta\validettaLang-fa-IR.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome-4.6.3\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="fonts\font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontYekan\style.css" />
+    <Content Include="fonts\fontYekan\Yekan.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -426,6 +456,16 @@
     <Content Include="Areas\Admin\Views\Address\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Details.cshtml" />
+    <Content Include="fonts\fontYekan\Yekan.eot" />
+    <Content Include="fonts\fontYekan\Yekan.ttf" />
+    <Content Include="fonts\fontYekan\Yekan.woff" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -481,6 +521,13 @@
     <Content Include="Views\Shared\Admin\AdminLayuot.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="T4MVC.tt.hooks.t4" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\BadRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

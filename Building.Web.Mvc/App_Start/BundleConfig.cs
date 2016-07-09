@@ -58,7 +58,8 @@ namespace Building.Web.Mvc
 
             bundles.Add(new ScriptBundle("~/admin/common/script").Include(
                  "~" + Content.AdminTheme.dist.js.jquery_min_js,
-                 "~" + Content.AdminTheme.dist.js.bootstrap_min_js
+                 "~" + Content.AdminTheme.dist.js.bootstrap_min_js,
+                 "~" + Content.AdminTheme.dist.js.ace_extra_min_js
                 ));
 
             bundles.Add(new ScriptBundle("~/admin/component/js").Include(
@@ -71,9 +72,6 @@ namespace Building.Web.Mvc
                 "~" + Content.AdminTheme.dist.js.date_time.bootstrap_datetimepicker_min_js,
                 "~" + Content.AdminTheme.dist.js.date_time.bootstrap_timepicker_min_js,
                 "~" + Content.AdminTheme.dist.js.date_time.daterangepicker_min_js,
-                //DATA_TABLE
-                "~" + Content.AdminTheme.dist.js.dataTables.jquery_dataTables_min_js,
-                "~" + Content.AdminTheme.dist.js.dataTables.jquery_dataTables_bootstrap_min_js,
                 //FLOAT
                 "~" + Content.AdminTheme.dist.js.flot.jquery_flot_min_js,
                 "~" + Content.AdminTheme.dist.js.flot.jquery_flot_pie_min_js,
@@ -88,6 +86,29 @@ namespace Building.Web.Mvc
                 "~" + Content.AdminTheme.dist.js.markdown.markdown_min_js,
                 "~" + Content.AdminTheme.dist.js.markdown.bootstrap_markdown_min_js
                 ));
+
+            bundles.Add(new ScriptBundle("~/admin/component/dataTable/js").Include(
+                //DATA_TABLE
+                "~" + Content.AdminTheme.dist.js.dataTables.jquery_dataTables_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.jquery_dataTables_bootstrap_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.extensions.buttons.dataTables_buttons_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.extensions.buttons.buttons_colVis_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.extensions.buttons.buttons_flash_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.extensions.buttons.buttons_html5_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.extensions.buttons.buttons_print_min_js,
+                "~" + Content.AdminTheme.dist.js.dataTables.extensions.@select.dataTables_select_min_js
+                ));
+
+            //<<--VALIDETTA_COMPONENT
+            bundles.Add(new ScriptBundle("~/admin/component/validetta/js").Include(
+                "~"+Content.Plugins.jquery_validetta.validetta_min_js,
+                "~"+Content.Plugins.jquery_validetta.validettaLang_fa_IR_js
+                ));
+
+            bundles.Add(new StyleBundle("~/admin/component/validetta/css").Include(
+                      "~"+Content.Plugins.jquery_validetta.validetta_min_css
+                     ));
+            //END-->>
 
             bundles.Add(new ScriptBundle("~/admin/script").Include(
                 "~" + Content.AdminTheme.dist.js.jquery_ui_min_js,

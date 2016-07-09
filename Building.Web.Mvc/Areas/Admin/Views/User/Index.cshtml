@@ -26,7 +26,16 @@
                     <div class="pull-right tableTools-container"></div>
                 </div>
                 <div class="table-header">
-                    Results for "Latest Registered Domains"
+                    <button class="btn btn-white btn-primary btn-xs btn-bold" type="submit">
+                        <i class="ace-icon fa fa-search orange2"></i>
+                        نمایش لیست (
+                        <i class="ace-icon fa fa-level-down fa-rotate-90 "></i>
+                        )
+                    </button>
+                    <a class="jq-btn btn btn-xs btn-white btn-primary btn-bold" data-url="@Url.Action("Create","User",new{area="Admin"})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <i class="ace-icon fa fa-plus-circle purple "></i>
+                        کاربر جدید
+                    </a>
                 </div>
 
                 <!-- div.table-responsive -->
@@ -49,6 +58,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Roles)
                                 </th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -78,15 +88,18 @@
                                     </td>
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
-                                            <a class="blue" href="user/ChangePassword/@item.Id">
+                                            <a class="jq-btn btn-yellow" data-url="@Url.Action("ChangePassword", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                <i class="ace-icon fa fa-key bigger-130"></i>
+                                            </a>
+
+                                            <a class="jq-btn blue" data-url="@Url.Action("Details", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                             </a>
 
-                                            <a class="green" href="tables.html#">
+                                            <a class="jq-btn green" data-url="@Url.Action("Edit", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                             </a>
-
-                                            <a class="red" href="tables.html#">
+                                            <a class="jq-btn red" data-url="@Url.Action("Delete", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                             </a>
                                         </div>
@@ -159,7 +172,7 @@
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null, null, null,
+					  null, null,null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

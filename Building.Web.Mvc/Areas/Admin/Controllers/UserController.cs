@@ -17,20 +17,26 @@ using ServiceLayer.IService;
 
 namespace Building.Web.Mvc.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public partial class UserController : Controller
     {
         private IUnitOfWork _uow;
         private IUsersManager _users;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public UserController(IUnitOfWork uow, IUsersManager users)
         {
             _uow = uow;
             _users = users;
-            //_signInManager = signInManager;
-            //_userManager = userManager;
+
+        }
+
+        public UserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -59,119 +65,183 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
 
 
         // GET: Admin/User
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
-            var list = _users.GetAllUsers();
+            var list = UserManager.Users.ToList();
             return View(list);
         }
 
-        public ActionResult ChangePassword(string id)
+        public virtual ActionResult ChangePassword(string id)
         {
             var userModel = new UsercredentialsModel();
             userModel.Id = id;
             return View(userModel);
         }
         [HttpPost]
-        public ActionResult ChangePassword(UsercredentialsModel usermodel)
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult ChangePassword(UsercredentialsModel usermodel)
         {
-            var user = _userManager.FindById(usermodel.Id);
-            
+            var user = UserManager.FindById(usermodel.Id);
+
             if (user == null)
             {
                 return View("Error");
             }
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(usermodel.Password);
-            var result = _userManager.UpdateAsync(user);
-            //if (result.Exception)
-            //{
-            //    //throw exception......
-            //}
+            user.PasswordHash = UserManager.PasswordHasher.HashPassword(usermodel.Password);
+            var result = UserManager.Update(user);
+            if (!result.Succeeded)
+            {
+                //throw exception......
+            }
             return View();
         }
 
-        //public static bool IsImpersonating(this IPrincipal principal)
-        //{
-        //    if (principal == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    var claimsPrincipal = principal as ClaimsPrincipal;
-        //    if (claimsPrincipal == null)
-        //    {
-        //        return false;
-        //    }
-
-
-        //    return claimsPrincipal.HasClaim("UserImpersonation", "true");
-        //}
-
-        //public static String GetOriginalUsername(this IPrincipal principal)
-        //{
-        //    if (principal == null)
-        //    {
-        //        return String.Empty;
-        //    }
-
-        //    var claimsPrincipal = principal as ClaimsPrincipal;
-        //    if (claimsPrincipal == null)
-        //    {
-        //        return String.Empty;
-        //    }
-
-        //    if (!claimsPrincipal.IsImpersonating())
-        //    {
-        //        return String.Empty;
-        //    }
-
-        //    var originalUsernameClaim = claimsPrincipal.Claims.SingleOrDefault(c => c.Type == "OriginalUsername");
-
-        //    if (originalUsernameClaim == null)
-        //    {
-        //        return String.Empty;
-        //    }
-
-        //    return originalUsernameClaim.Value;
-        //}
-
-
-        public async Task ImpersonateUserAsync(string userName)
+        public virtual ActionResult Create()
         {
-            var context = System.Web.HttpContext.Current;
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
 
-            var originalUsername = context.User.Identity.Name;
-
-            var impersonatedUser = await _userManager.FindByNameAsync(userName);
-
-            var impersonatedIdentity = await _userManager.CreateIdentityAsync(impersonatedUser, DefaultAuthenticationTypes.ApplicationCookie);
-            impersonatedIdentity.AddClaim(new Claim("UserImpersonation", "true"));
-            impersonatedIdentity.AddClaim(new Claim("OriginalUsername", originalUsername));
-
-            var authenticationManager = context.GetOwinContext().Authentication;
-            authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, impersonatedIdentity);
+            return View();
         }
 
-        //public async Task RevertImpersonationAsync()
-        //{
-        //    var context = System.Web.HttpContext.Current;
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public virtual async Task<ActionResult> Create(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-        //    if (!System.Web.HttpContext.Current.User.IsImpersonating())
-        //    {
-        //        throw new Exception("Unable to remove impersonation because there is no impersonation");
-        //    }
+                    //Assign Role to user Here 
+                    await this.UserManager.AddToRoleAsync(user.Id, model.Name);
+                    //Ends Here
+
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "User");
+                }
+                ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        public virtual ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("BadRequest", "Error", new { area = "" });
+            }
+            var user = UserManager.FindById(id);
+            if (user == null)
+            {
+                return RedirectToAction("NotFound", "Error", new { area = "" });
+            }
+            return View(user);
+
+           }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult DeleteConfirmed(string id)
+        {
+            var user = UserManager.FindById(id);
+            UserManager.Delete(user);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
-        //    var originalUsername = System.Web.HttpContext.Current.User.GetOriginalUsername();
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_userManager != null)
+                {
+                    _userManager.Dispose();
+                    _userManager = null;
+                }
 
-        //    var originalUser = await _userManager.FindByNameAsync(originalUsername);
+                if (_signInManager != null)
+                {
+                    _signInManager.Dispose();
+                    _signInManager = null;
+                }
+            }
 
-        //    var impersonatedIdentity = await _userManager.CreateIdentityAsync(originalUser, DefaultAuthenticationTypes.ApplicationCookie);
-        //    var authenticationManager = context.GetOwinContext().Authentication;
+            base.Dispose(disposing);
+        }
 
-        //    authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-        //    authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, impersonatedIdentity);
-        //}
+
+        #region Helpers
+        // Used for XSRF protection when adding external logins
+        private const string XsrfKey = "XsrfId";
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        internal class ChallengeResult : HttpUnauthorizedResult
+        {
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
+            {
+            }
+
+            public ChallengeResult(string provider, string redirectUri, string userId)
+            {
+                LoginProvider = provider;
+                RedirectUri = redirectUri;
+                UserId = userId;
+            }
+
+            public string LoginProvider { get; set; }
+            public string RedirectUri { get; set; }
+            public string UserId { get; set; }
+
+            public override void ExecuteResult(ControllerContext context)
+            {
+                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+                if (UserId != null)
+                {
+                    properties.Dictionary[XsrfKey] = UserId;
+                }
+                context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
+            }
+        }
+        #endregion
 
     }
 }

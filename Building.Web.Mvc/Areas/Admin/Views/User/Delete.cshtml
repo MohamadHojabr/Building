@@ -1,0 +1,23 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityUser
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="alert alert-block alert-danger">
+        <p>
+            <strong>
+                <i class="ace-icon fa fa-close"></i>
+                آیا از حذف کاربر @Model.UserName اطمینان دارید ؟
+            </strong>
+
+        </p>
+        <p>
+            <input type="submit" value="حذف" class="btn btn-sm btn-danger" />
+            <button class="btn btn-sm" data-dismiss="modal" aria-label="Close">لغو کردن</button>
+        </p>
+    </div>
+
+}

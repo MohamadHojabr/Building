@@ -1,0 +1,36 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@Scripts.Render("~/admin/component/validetta/js")
+@Styles.Render("~/admin/component/validetta/css")
+
+<div class="well">
+    <h4 class="header smaller lighter blue">ایجاد نقش جدید</h4>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "signupform" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+            @Html.ValidationSummary(true)
+
+            <label for="Name">
+                نام نقش
+                <small class="text-warning"></small>
+            </label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", id = "Name" , data_validetta = "required" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <hr />
+            <input class="btn btn-success" type="submit" value="درج" />
+            }
+
+        </div>
+
+<script>
+        $(document).ready(function () {
+            $("form").validetta({
+                bubblePosition: 'bottom',
+                bubbleGapTop: 10,
+                bubbleGapLeft: -5
+            });
+        });
+</script>
