@@ -72,6 +72,14 @@
     <Compile Include="Migrations\201607050628031_edit context.Designer.cs">
       <DependentUpon>201607050628031_edit context.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607100726342_add new profile structure.cs" />
+    <Compile Include="Migrations\201607100726342_add new profile structure.Designer.cs">
+      <DependentUpon>201607100726342_add new profile structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607101347506_qaz.cs" />
+    <Compile Include="Migrations\201607101347506_qaz.Designer.cs">
+      <DependentUpon>201607101347506_qaz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +99,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607050628031_edit context.resx">
       <DependentUpon>201607050628031_edit context.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607100726342_add new profile structure.resx">
+      <DependentUpon>201607100726342_add new profile structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607101347506_qaz.resx">
+      <DependentUpon>201607101347506_qaz.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

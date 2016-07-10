@@ -90,6 +90,23 @@ namespace Building.ViewModels.Account
         public string ConfirmPassword { get; set; }
     }
 
+    public class EditUserViewModel
+    {
+        public string Id { get; set; }
+        [Required]
+        [Display(Name = "نقش ها")]
+        public string Name { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "ایمیل")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "نام کاربری")]
+        public string UserName { get; set; }
+    }
+
     public class ResetPasswordViewModel
     {
         [Required]

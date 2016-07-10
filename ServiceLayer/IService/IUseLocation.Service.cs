@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IUseLocation
+    public interface IUseLocation:IDisposable
     {
         void AddOrUpdate(UseLocation useLocation);
         void Delete(UseLocation useLocation);

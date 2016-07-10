@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DomainClasses.Models.MainCategory>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin/AdminLayuot.cshtml";
+}
+
+@section pageTitle{
+    مدیریت دسته اصلی
+}
+
+
+<div class="dd" id="treeview">
+   @ViewHelpers.RenderCategories(Model)
+
+</div>
+
+@section scripts{
+    <!-- page specific plugin scripts -->
+<script src="~/Content/AdminTheme/dist/js/jquery.nestable.min.js"></script>
+}
+
+@section scriptsRelatedToPage{
+
+
+<script type="text/javascript">
+			jQuery(function($){
+
+				$('.dd').nestable();
+
+				$('.dd-handle a').on('mousedown', function(e){
+					e.stopPropagation();
+				});
+
+				$('[data-rel="tooltip"]').tooltip();
+
+			});
+</script>
+}
+
+
+
+

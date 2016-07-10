@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -71,6 +72,12 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             return View(list);
         }
 
+        public ActionResult Detail(string id)
+        {
+            var user = UserManager.FindById(id);
+            return View(user);
+        }
+
         public virtual ActionResult ChangePassword(string id)
         {
             var userModel = new UsercredentialsModel();
@@ -93,7 +100,7 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             {
                 //throw exception......
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
         public virtual ActionResult Create()
@@ -136,6 +143,68 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        ///[Authorize(Roles = "administrator")]
+        public ActionResult UserConfirmationByAdmin(string Id)
+        {
+            var user = UserManager.FindById(Id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            if (user.LockoutEnabled == true)
+            {
+                ViewBag.isActive = true;
+            }
+            else
+            {
+                ViewBag.isActive = false;
+            }
+
+            return View(user);
+        }
+        //[Authorize(Roles = "administrator")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserConfirmation(string id)
+        {
+
+            var user = UserManager.FindById(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (user.LockoutEnabled == true)
+            {
+                user.LockoutEnabled = false;
+                UserManager.Update(user);
+                return RedirectToAction("index");
+
+            }
+
+            if (user.LockoutEnabled == false)
+            {
+                user.LockoutEnabled = true;
+                UserManager.Update(user);
+                return RedirectToAction("index");
+
+            }
+
+
+            return RedirectToAction("UserConfirmationByAdmin");
+        }
+
+
+        //
+        [Authorize(Roles = "administrator")]
+        [HttpPost]
+        [OutputCache(Location = System.Web.UI.OutputCacheLocation.None, NoStore = true)]
+        public ActionResult CheckUserName(string UserName)
+        {
+            if (0 == context.Users.Where(p => p.UserName == UserName).Count()) return Json(true);
+            return Json(false);
+        }
+
 
         public virtual ActionResult Delete(string id)
         {

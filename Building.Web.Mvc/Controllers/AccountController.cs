@@ -79,6 +79,17 @@ namespace Building.Web.Mvc.Controllers
             }
             if (ModelState.IsValid)
             {
+                var user = await UserManager.FindByNameAsync(model.UserName);
+
+                if (!user.LockoutEnabled)
+                {
+                    return View("Lockout");
+                }
+
+            }
+
+            if (ModelState.IsValid)
+            {
                 var profileData = new UserProfileSessionData
                 {
                     //UserId = model.Email,

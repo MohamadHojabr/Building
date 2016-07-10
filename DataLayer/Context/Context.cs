@@ -26,38 +26,32 @@ namespace DataLayer.Context
             base.OnModelCreating(modelBuilder);
 
             // Configure CompanyProfile & RelatedUser entity
-            modelBuilder.Entity<CompanyProfile>()
+            modelBuilder.Entity<Profile>()
                 .HasOptional(s => s.RelatedUser) // Mark RelatedUser property optional in CompanyProfile entity
-                .WithOptionalPrincipal(ad => ad.CompanyProfile);
+                .WithOptionalPrincipal(ad => ad.Profile);
                 // mark RelatedUser property as required in CompanyProfile entity. Cannot save CompanyProfile without Student
 
-            modelBuilder.Entity<PersonalProfile>()
-                .HasOptional(s => s.RelatedUser)
-                .WithOptionalPrincipal(ad => ad.PersonalProfile);
-
-            modelBuilder.Entity<PersonalProfile>()
+            modelBuilder.Entity<Profile>()
                 .HasRequired(d => d.MainCategory)
                 .WithMany()
                 .HasForeignKey(d => d.MainCategoryId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CompanyProfile>()
-                .HasRequired(d => d.MainCategory)
-                .WithMany()
-                .HasForeignKey(d => d.MainCategoryId)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<MainCategory>()
+                        .HasOptional(x => x.Parent)
+                        .WithMany(x => x.Children)
+                        .HasForeignKey(x => x.ParentId)
+                        .WillCascadeOnDelete(false);
         }
-
+        public DbSet<Profile> Profiles { set; get; }
         public DbSet<MainCategory> Categories { set; get; }
         public DbSet<Address> Addresses { set; get; }
         public DbSet<Article> Articles { set; get; }
         public DbSet<ArticleFile> ArticleFiles { set; get; }
         public DbSet<Brand> Brands { set; get; }
-        public DbSet<CompanyProfile> CompanyProfiles { set; get; }
         public DbSet<Contact> Contacts { set; get; }
         public DbSet<ImageGallery> ImageGalleries { set; get; }
         public DbSet<ImageGalleryFile> ImageGalleryFiles { set; get; }
-        public DbSet<PersonalProfile> PersonalProfiles { set; get; }
         public DbSet<Portfolio> Portfolios { set; get; }
         public DbSet<PortfolioFile> PortfolioFiles { set; get; }
         public DbSet<Product> Products { set; get; }
@@ -130,6 +124,5 @@ namespace DataLayer.Context
         }
 
         #endregion
-
     }
 }

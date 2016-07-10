@@ -236,6 +236,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AddressController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -466,6 +468,14 @@
     <Content Include="fonts\fontYekan\Yekan.woff" />
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UserConfirmationByAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\PersonalProfiles.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\CompanyProfiles.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\Create.cshtml" />
+    <Content Include="App_Code\ViewHelpers.cshtml" />
+    <Content Include="Areas\Admin\Views\MainCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MainCategory\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

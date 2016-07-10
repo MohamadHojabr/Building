@@ -44,10 +44,8 @@ namespace DomainClasses.Models
 
         #region NavigationProperties
 
-        public Guid PersonalProfileId { get; set; }
-        public virtual PersonalProfile PersonalProfile { get; set; }
-        public Guid CompanyProfileId { get; set; }
-        public virtual CompanyProfile CompanyProfile { get; set; }
+        public Guid ProfileId { get; set; }
+        public virtual Profile Profile { get; set; }
         public virtual ICollection<PortfolioFile> PortfolioFiles { get; set; }
 
         #endregion

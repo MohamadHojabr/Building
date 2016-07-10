@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IMainCategory
+    public interface IMainCategory:IDisposable
     {
         void AddOrUpdate(MainCategory mainCategory);
         void Delete(MainCategory mainCategory);

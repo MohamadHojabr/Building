@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IPortfolio
+    public interface IPortfolio:IDisposable
     {
         void AddOrUpdate(Portfolio portfolio);
         void Delete(Portfolio portfolio);

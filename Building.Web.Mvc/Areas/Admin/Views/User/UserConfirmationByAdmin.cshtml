@@ -1,0 +1,30 @@
+﻿@model DomainClasses.Models.ApplicationUser
+
+                    @if (ViewBag.isActive == true)
+                    {
+                        <div class="alert alert-success">
+                            <i class="fa fa-check fa-fw fa-lg"></i>
+                            <h3><strong>وضعیت کاربر @Model.UserName فعال میباشد</strong></h3>
+                        </div>
+                    }
+
+                    @if (ViewBag.isActive == false)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="fa fa-times-circle fa-fw fa-lg"></i>
+                            <h3><strong>وضعیت کاربر @Model.UserName غیر فعال میباشد</strong></h3>
+                        </div>
+                    }
+                    <div class="main-box clearfix">
+                        <header class="main-box-header clearfix"></header>
+                        <div class="main-box-body clearfix">
+                            @using (Html.BeginForm("UserConfirmation", "User"))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.Id)
+                                <div class="form-actions no-color">
+                                    <button class="btn btn-info" type="submit">تغییر وضعیت</button>
+                                </div>
+                            }
+                        </div>
+                    </div>

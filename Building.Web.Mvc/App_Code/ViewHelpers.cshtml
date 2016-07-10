@@ -1,0 +1,70 @@
+﻿@using DomainClasses.Models
+
+<li class="dd-item">
+
+        @helper RenderCategories(IEnumerable<MainCategory> categories)
+        {
+                foreach (var category in categories)
+                {
+                            @category.Name
+                            <ol class="dd-list">
+                                @RenderCategoryChildren(category.Children)
+                            </ol>
+
+                }
+            }
+        }
+</li>
+
+
+@helper RenderCategoryChildren(IEnumerable<MainCategory> categories)
+{
+    if (categories != null)
+    {
+        foreach (var category in categories)
+        {
+            if (category != null)
+            {
+                <li class="dd-item  item-blue2" data-id="#" data-name="@category.Name">
+                    <div class="dd-handle">
+                        @category.Name
+                        <div class="pull-left action-buttons">
+                            <a class="green" href="nestable-list.html#">
+                                <i class="ace-icon fa fa-plus bigger-130"></i>
+                            </a>
+                            <a class="btn-yellow" href="nestable-list.html#">
+                                <i class="ace-icon fa fa-search bigger-130"></i>
+                            </a>
+                            <a class="blue" href="nestable-list.html#">
+                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                            </a>
+                            <a class="red" href="nestable-list.html#">
+                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="dd-dev"></div>
+                    @if (category.Children.Any())
+                    {
+                        <ol class="dd-list">
+                            @RenderCategoryChildren(category.Children)
+                        </ol>
+                    }
+                </li>
+            }
+        }
+    }
+}
+
+
+@helper Truncate(string input, int length)
+{
+if (input.Length <= length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>...</text>
+}
+}

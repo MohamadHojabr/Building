@@ -9,13 +9,6 @@
     مدیریت کاربران
 }
 
-@*<td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.AddressId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.AddressId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.AddressId })
-    </td>*@
-
-
 <div class="row">
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
@@ -92,12 +85,21 @@
                                                 <i class="ace-icon fa fa-key bigger-130"></i>
                                             </a>
 
-                                            <a class="jq-btn blue" data-url="@Url.Action("Details", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                            <a class="jq-btn blue" data-url="@Url.Action("Detail", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                 <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                             </a>
 
-                                            <a class="jq-btn green" data-url="@Url.Action("Edit", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                            <a class="jq-btn" data-url="@Url.Action("UserConfirmationByAdmin", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                @if (item.LockoutEnabled != false)
+                                                {
+                                                    <i class="ace-icon fa fa-unlock bigger-130 green"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="ace-icon fa fa-lock bigger-130 red"></i>
+
+                                                }
+                                            
                                             </a>
                                             <a class="jq-btn red" data-url="@Url.Action("Delete", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>

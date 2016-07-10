@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IProduct
+    public interface IProduct:IDisposable
     {
         void AddOrUpdate(Product product);
         void Delete(Product product);

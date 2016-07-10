@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IBrand
+    public interface IBrand:IDisposable
     {
         void AddOrUpdate(Brand brand);
         void Delete(Brand brand);

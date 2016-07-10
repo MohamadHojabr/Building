@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IVideoGallery
+    public interface IVideoGallery:IDisposable
     {
         void AddOrUpdate(VideoGallery videoGallery);
         void Delete(VideoGallery videoGallery);

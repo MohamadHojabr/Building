@@ -18,7 +18,7 @@ namespace Building.Web.Mvc.Controllers
         // GET: Addresses
         public virtual ActionResult Index()
         {
-            var addresses = db.Addresses.Include(a => a.CompanyProfile).Include(a => a.PersonalProfile);
+            var addresses = db.Addresses.Include(a => a.Profile);
             return View(addresses.ToList());
         }
 
@@ -40,8 +40,7 @@ namespace Building.Web.Mvc.Controllers
         // GET: Addresses/Create
         public virtual ActionResult Create()
         {
-            ViewBag.CompanyProfileId = new SelectList(db.CompanyProfiles, "CompanyProfileId", "CompanyName");
-            ViewBag.PersonalProfileId = new SelectList(db.PersonalProfiles, "PersonalProfileId", "Name");
+            ViewBag.ProfileId = new SelectList(db.Profiles, "ProfileId", "FirstName");
             return View();
         }
 
@@ -60,8 +59,7 @@ namespace Building.Web.Mvc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompanyProfileId = new SelectList(db.CompanyProfiles, "CompanyProfileId", "CompanyName", address.CompanyProfileId);
-            ViewBag.PersonalProfileId = new SelectList(db.PersonalProfiles, "PersonalProfileId", "Name", address.PersonalProfileId);
+            ViewBag.ProfileId = new SelectList(db.Profiles, "ProfileId", "FirstName");
             return View(address);
         }
 
@@ -77,8 +75,7 @@ namespace Building.Web.Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CompanyProfileId = new SelectList(db.CompanyProfiles, "CompanyProfileId", "CompanyName", address.CompanyProfileId);
-            ViewBag.PersonalProfileId = new SelectList(db.PersonalProfiles, "PersonalProfileId", "Name", address.PersonalProfileId);
+            ViewBag.ProfileId = new SelectList(db.Profiles, "ProfileId", "FirstName");
             return View(address);
         }
 
@@ -95,8 +92,7 @@ namespace Building.Web.Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CompanyProfileId = new SelectList(db.CompanyProfiles, "CompanyProfileId", "CompanyName", address.CompanyProfileId);
-            ViewBag.PersonalProfileId = new SelectList(db.PersonalProfiles, "PersonalProfileId", "Name", address.PersonalProfileId);
+            ViewBag.ProfileId = new SelectList(db.Profiles, "ProfileId", "FirstName");
             return View(address);
         }
 

@@ -45,10 +45,8 @@ namespace DomainClasses.Models
         public virtual Brand Brand { get; set; }
         public Guid UseLocationId { get; set; }
         public virtual UseLocation UseLocation { get; set; }
-        public Guid PersonalProfileId { get; set; }
-        public virtual PersonalProfile PersonalProfile { get; set; }
-        public Guid CompanyProfileId { get; set; }
-        public virtual CompanyProfile CompanyProfile { get; set; }
+        public Guid ProfileId { get; set; }
+        public virtual Profile Profile { get; set; }
         public virtual ICollection<ProductFile> ProductFiles { get; set; }
 
         #endregion

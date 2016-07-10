@@ -18,6 +18,7 @@ namespace DomainClasses.Models
         public MainCategory()
         {
             MainCategoryId = SequentialGuidGenerator.NewSequentialGuid();
+            ParentId = SequentialGuidGenerator.NewSequentialGuid();
         }
 
         #endregion
@@ -43,11 +44,10 @@ namespace DomainClasses.Models
 
         #region NavigationProperties
 
-        public int? ParentId { get; set; }
+        public Guid? ParentId { get; set; }
         public virtual MainCategory Parent { get; set; }
         public virtual ICollection<MainCategory> Children { get; set; }
-        public virtual ICollection<PersonalProfile> PersonalProfiles { get; set; }
-        public virtual ICollection<CompanyProfile> CompanyProfiles { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
 
         #endregion
     }

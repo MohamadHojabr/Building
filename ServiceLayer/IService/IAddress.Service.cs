@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IAddress
+    public interface IAddress:IDisposable
     {
         void AddOrUpdate(Address address);
         void Delete(Address address);

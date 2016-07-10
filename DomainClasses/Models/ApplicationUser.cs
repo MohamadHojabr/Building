@@ -22,8 +22,8 @@ namespace DomainClasses.Models
             return userIdentity;
         }
 
-        public virtual CompanyProfile CompanyProfile { get; set; }
-        public virtual PersonalProfile PersonalProfile { get; set; }
+        public Guid ProfileId { get; set; }
+        public virtual Profile Profile { get; set; }
         public string FieldOfStudy { get; set; }
         public AcademicDegrees AcademicDegrees { get; set; }
 

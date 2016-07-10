@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IProject
+    public interface IProject:IDisposable
     {
         void AddOrUpdate(Project project);
         void Delete(Project project);

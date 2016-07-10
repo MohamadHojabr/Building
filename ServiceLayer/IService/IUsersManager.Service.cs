@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IUsersManager
+    public interface IUsersManager:IDisposable
     {
         IList<ApplicationUser> GetAllUsers();
         ApplicationUser FindUserById(string id);

@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IContact
+    public interface IContact:IDisposable
     {
         void AddOrUpdate(Contact contact);
         void Delete(Contact contact);

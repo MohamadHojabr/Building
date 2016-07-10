@@ -72,11 +72,10 @@ namespace Building.Web.Mvc.App_Start
             kernel.Bind<IArticle>().To<EfArticle>().InRequestScope();
             kernel.Bind<IBrand>().To<EfBrand>().InRequestScope();
             kernel.Bind<ICity>().To<EfCity>().InRequestScope();
-            kernel.Bind<ICompanyProfile>().To<EfCompanyProfile>().InRequestScope();
+            kernel.Bind<IProfile>().To<EfProfile>().InRequestScope();
             kernel.Bind<IContact>().To<EfContact>().InRequestScope();
             kernel.Bind<IImageGallery>().To<EfImageGallery>().InRequestScope();
             kernel.Bind<IMainCategory>().To<EfMainCategory>().InRequestScope();
-            kernel.Bind<IPersonalProfile>().To<EfPersonalProfile>().InRequestScope();
             kernel.Bind<IPortfolio>().To<EfPortfolio>().InRequestScope();
             kernel.Bind<IProduct>().To<EfProduct>().InRequestScope();
             kernel.Bind<IProject>().To<EfProject>().InRequestScope();

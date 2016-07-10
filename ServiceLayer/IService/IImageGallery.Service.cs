@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IImageGallery
+    public interface IImageGallery:IDisposable
     {
         void AddOrUpdate(ImageGallery imageGallery);
         void Delete(ImageGallery imageGallery);

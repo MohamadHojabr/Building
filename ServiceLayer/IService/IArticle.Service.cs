@@ -7,7 +7,7 @@ using DomainClasses.Models;
 
 namespace ServiceLayer.IService
 {
-    public interface IArticle
+    public interface IArticle:IDisposable
     {
         void AddOrUpdate(Article article);
         void Delete(Article article);
