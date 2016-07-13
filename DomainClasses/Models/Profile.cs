@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Building.Common.Helpers;
 using Buolding.Utility;
 using DomainClasses.Enums;
 
@@ -20,17 +21,21 @@ namespace DomainClasses.Models
 
         public Profile()
         {
-            ProfileId = SequentialGuidGenerator.NewSequentialGuid();
+            //ProfileId = SequentialGuidGenerator.NewSequentialGuid();
         }
 
         #endregion
 
         #region Properties
         [Key]
-        public Guid ProfileId { get; set; }
-        [Required(ErrorMessage = "نوع پروفایل")]
+        public string Id { get; set; }
+        [Required(ErrorMessage = "نوع پروفایل را مشخص نکرده اید")]
         [DisplayName("نوع پروفایل ")]
         public ProfileType ProfileType { get; set; }
+
+        [Required(ErrorMessage = "جنسیت را مشخص نکرده اید")]
+        [DisplayName("جنسیت ")]
+        public Gender Gender { get; set; }
 
         [Required(ErrorMessage = "لطفا نام را وارد کنید")]
         [DisplayName("نام ")]
@@ -43,6 +48,32 @@ namespace DomainClasses.Models
 
         [DisplayName("تصویر پروفایل")]
         public string ProfilePicture { get; set; }
+        [MaxLength(256)]
+        [DisplayName("توضیحات")]
+        public string Comment { get; set; }
+        [DisplayName("تاریخ تولد")]
+
+        [DataType(DataType.DateTime, ErrorMessage = "فرمت تاریخ صحیح نیست")]
+        [Display(Name = "تاریخ")]
+        [Required(ErrorMessage = "تاریخ تولد را وارد کنید")]
+        public DateTime BirthDate { get; set; }
+
+        [NotMapped]
+        [Display(Name = "تاریخ")]
+        [DataType(DataType.DateTime, ErrorMessage = "فرمت تاریخ صحیح نیست")]
+        public string BirthDateString
+        {
+            get
+            {
+                return BirthDate.ToPersianDateTime2(includeHourMinute: false);
+            }
+            set
+            {
+                BirthDate = PersianDate.ToGregorianDate2(value);
+            }
+        }
+
+
         [DisplayName("آدرس شبکه اجتماعی گوگل پلاس")]
         [MaxLength(512)]
         public string SocialGooglePlus { get; set; }
@@ -60,7 +91,7 @@ namespace DomainClasses.Models
         public string SocialTelegram { get; set; }
         [DisplayName("آدرس شبکه اجتماعی اینستاگرام")]
         [MaxLength(512)]
-        public string Instagram { get; set; }
+        public string SocialInstagram { get; set; }
         #endregion
 
         #region Property If Profile is compony
@@ -76,6 +107,8 @@ namespace DomainClasses.Models
         #endregion
 
         #region NavigationProperties
+        //public string UserId { get; set; }
+        [ForeignKey("Id")]
         public virtual ApplicationUser RelatedUser { get; set; }
         public Guid MainCategoryId { get; set; }
         public virtual MainCategory MainCategory { get; set; }
@@ -85,7 +118,7 @@ namespace DomainClasses.Models
         public virtual ICollection<ImageGallery> ImageGalleries { get; set; }
         public virtual ICollection<VideoGallery> VideoGalleries { get; set; }
         public virtual ICollection<Product> Products { get; set; }
-
+        public virtual ICollection<ProfileFile> ProfileFiles { get; set; }
         #endregion
 
         #region NotMapped props
@@ -93,6 +126,9 @@ namespace DomainClasses.Models
 
         [NotMapped]
         public string FullName => FirstName + " " + LastName;
+        [NotMapped]
+        public string PictureUrl => "/Uploads/Profile/" + ProfilePicture;
+
 
         #endregion
 

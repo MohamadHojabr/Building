@@ -3,7 +3,7 @@ namespace DataLayer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -16,33 +16,56 @@ namespace DataLayer.Migrations
                         State = c.String(nullable: false, maxLength: 256),
                         City = c.String(nullable: false, maxLength: 256),
                         CompleteAddress = c.String(maxLength: 1024),
-                        PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfileId = c.Guid(nullable: false),
+                        ProfileId = c.Guid(nullable: false),
+                        CreatedOn = c.DateTime(),
+                        CreatedBy = c.String(),
+                        ModifiedOn = c.DateTime(),
+                        ModifiedBy = c.String(),
+                        Profile_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.AddressId)
+                .ForeignKey("dbo.Profiles", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
+            
+            CreateTable(
+                "dbo.Contacts",
+                c => new
+                    {
+                        ContactId = c.Guid(nullable: false),
+                        AreaCode = c.Int(nullable: false),
+                        Number = c.Int(nullable: false),
+                        LocationType = c.Int(nullable: false),
+                        PhoneType = c.Int(nullable: false),
+                        AddressId = c.Guid(nullable: false),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
                         ModifiedOn = c.DateTime(),
                         ModifiedBy = c.String(),
                     })
-                .PrimaryKey(t => t.AddressId)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfileId, cascadeDelete: true)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfileId, cascadeDelete: true)
-                .Index(t => t.PersonalProfileId)
-                .Index(t => t.CompanyProfileId);
+                .PrimaryKey(t => t.ContactId)
+                .ForeignKey("dbo.Addresses", t => t.AddressId, cascadeDelete: true)
+                .Index(t => t.AddressId);
             
             CreateTable(
-                "dbo.CompanyProfiles",
+                "dbo.Profiles",
                 c => new
                     {
-                        CompanyProfileId = c.Guid(nullable: false),
-                        CompanyName = c.String(nullable: false),
-                        RegistrationNumber = c.String(),
-                        FieldOfActivity = c.String(nullable: false),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        ProfileType = c.Int(nullable: false),
+                        Gender = c.Int(nullable: false),
+                        FirstName = c.String(nullable: false, maxLength: 256),
+                        LastName = c.String(nullable: false, maxLength: 256),
                         ProfilePicture = c.String(),
+                        Comment = c.String(maxLength: 256),
+                        BirthDate = c.DateTime(),
                         SocialGooglePlus = c.String(maxLength: 512),
                         SocialFacebok = c.String(maxLength: 512),
                         SocialTwiter = c.String(maxLength: 512),
                         SocialTelegram = c.String(maxLength: 512),
-                        Socialinstagram = c.String(maxLength: 512),
+                        Instagram = c.String(maxLength: 512),
+                        CompanyName = c.String(),
+                        RegistrationNumber = c.String(),
+                        FieldOfActivity = c.String(),
                         MainCategoryId = c.Guid(nullable: false),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
@@ -50,9 +73,11 @@ namespace DataLayer.Migrations
                         ModifiedBy = c.String(),
                         MainCategory_MainCategoryId = c.Guid(),
                     })
-                .PrimaryKey(t => t.CompanyProfileId)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.MainCategories", t => t.MainCategory_MainCategoryId)
                 .ForeignKey("dbo.MainCategories", t => t.MainCategoryId)
+                .ForeignKey("dbo.AspNetUsers", t => t.Id)
+                .Index(t => t.Id)
                 .Index(t => t.MainCategoryId)
                 .Index(t => t.MainCategory_MainCategoryId);
             
@@ -67,18 +92,16 @@ namespace DataLayer.Migrations
                         ArticleSource = c.String(),
                         Rate = c.Int(nullable: false),
                         ThumbnailImage = c.String(),
-                        PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfileId = c.Guid(nullable: false),
+                        ProfileId = c.Guid(nullable: false),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
                         ModifiedOn = c.DateTime(),
                         ModifiedBy = c.String(),
+                        Profile_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ArticleId)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfileId, cascadeDelete: true)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfileId, cascadeDelete: true)
-                .Index(t => t.PersonalProfileId)
-                .Index(t => t.CompanyProfileId);
+                .ForeignKey("dbo.Profiles", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
             
             CreateTable(
                 "dbo.ArticleFiles",
@@ -98,31 +121,6 @@ namespace DataLayer.Migrations
                 .Index(t => t.ArticleId);
             
             CreateTable(
-                "dbo.PersonalProfiles",
-                c => new
-                    {
-                        PersonalProfileId = c.Guid(nullable: false),
-                        Name = c.String(nullable: false, maxLength: 256),
-                        LastName = c.String(nullable: false, maxLength: 256),
-                        ProfilePicture = c.String(),
-                        SocialGooglePlus = c.String(maxLength: 512),
-                        SocialFacebok = c.String(maxLength: 512),
-                        SocialTwiter = c.String(maxLength: 512),
-                        SocialTelegram = c.String(maxLength: 512),
-                        MainCategoryId = c.Guid(nullable: false),
-                        CreatedOn = c.DateTime(),
-                        CreatedBy = c.String(),
-                        ModifiedOn = c.DateTime(),
-                        ModifiedBy = c.String(),
-                        MainCategory_MainCategoryId = c.Guid(),
-                    })
-                .PrimaryKey(t => t.PersonalProfileId)
-                .ForeignKey("dbo.MainCategories", t => t.MainCategory_MainCategoryId)
-                .ForeignKey("dbo.MainCategories", t => t.MainCategoryId)
-                .Index(t => t.MainCategoryId)
-                .Index(t => t.MainCategory_MainCategoryId);
-            
-            CreateTable(
                 "dbo.ImageGalleries",
                 c => new
                     {
@@ -130,21 +128,19 @@ namespace DataLayer.Migrations
                         Name = c.String(nullable: false, maxLength: 256),
                         Describtion = c.String(),
                         Rate = c.Int(nullable: false),
-                        PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfileId = c.Guid(nullable: false),
+                        ProfileId = c.Guid(nullable: false),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
                         ModifiedOn = c.DateTime(),
                         ModifiedBy = c.String(),
                         ImageGallery_ImageGalleryId = c.Guid(),
+                        Profile_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ImageGalleryId)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfileId, cascadeDelete: true)
                 .ForeignKey("dbo.ImageGalleries", t => t.ImageGallery_ImageGalleryId)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfileId, cascadeDelete: true)
-                .Index(t => t.PersonalProfileId)
-                .Index(t => t.CompanyProfileId)
-                .Index(t => t.ImageGallery_ImageGalleryId);
+                .ForeignKey("dbo.Profiles", t => t.Profile_Id)
+                .Index(t => t.ImageGallery_ImageGalleryId)
+                .Index(t => t.Profile_Id);
             
             CreateTable(
                 "dbo.MainCategories",
@@ -153,16 +149,16 @@ namespace DataLayer.Migrations
                         MainCategoryId = c.Guid(nullable: false),
                         Name = c.String(nullable: false, maxLength: 256),
                         Describtion = c.String(),
-                        ParentId = c.Int(),
+                        MarkAsDelete = c.Boolean(nullable: false),
+                        ParentId = c.Guid(),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
                         ModifiedOn = c.DateTime(),
                         ModifiedBy = c.String(),
-                        Parent_MainCategoryId = c.Guid(),
                     })
                 .PrimaryKey(t => t.MainCategoryId)
-                .ForeignKey("dbo.MainCategories", t => t.Parent_MainCategoryId)
-                .Index(t => t.Parent_MainCategoryId);
+                .ForeignKey("dbo.MainCategories", t => t.ParentId)
+                .Index(t => t.ParentId);
             
             CreateTable(
                 "dbo.Portfolios",
@@ -173,18 +169,16 @@ namespace DataLayer.Migrations
                         ThumbnailImage = c.String(),
                         Describtion = c.String(),
                         Rate = c.Int(nullable: false),
-                        PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfileId = c.Guid(nullable: false),
+                        ProfileId = c.Guid(nullable: false),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
                         ModifiedOn = c.DateTime(),
                         ModifiedBy = c.String(),
+                        Profile_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.PortfolioId)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfileId, cascadeDelete: true)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfileId, cascadeDelete: true)
-                .Index(t => t.PersonalProfileId)
-                .Index(t => t.CompanyProfileId);
+                .ForeignKey("dbo.Profiles", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
             
             CreateTable(
                 "dbo.PortfolioFiles",
@@ -213,22 +207,20 @@ namespace DataLayer.Migrations
                         Rate = c.Int(nullable: false),
                         BrandId = c.Guid(nullable: false),
                         UseLocationId = c.Guid(nullable: false),
-                        PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfileId = c.Guid(nullable: false),
+                        ProfileId = c.Guid(nullable: false),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
                         ModifiedOn = c.DateTime(),
                         ModifiedBy = c.String(),
+                        Profile_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.Brands", t => t.BrandId, cascadeDelete: true)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfileId, cascadeDelete: true)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfileId, cascadeDelete: true)
+                .ForeignKey("dbo.Profiles", t => t.Profile_Id)
                 .ForeignKey("dbo.UseLocations", t => t.UseLocationId, cascadeDelete: true)
                 .Index(t => t.BrandId)
                 .Index(t => t.UseLocationId)
-                .Index(t => t.PersonalProfileId)
-                .Index(t => t.CompanyProfileId);
+                .Index(t => t.Profile_Id);
             
             CreateTable(
                 "dbo.Brands",
@@ -290,15 +282,9 @@ namespace DataLayer.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
-                        PersonalProfile_PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfile_CompanyProfileId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfile_PersonalProfileId)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfile_CompanyProfileId)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex")
-                .Index(t => t.PersonalProfile_PersonalProfileId)
-                .Index(t => t.CompanyProfile_CompanyProfileId);
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -347,18 +333,16 @@ namespace DataLayer.Migrations
                         Describtion = c.String(),
                         ThumbnailImage = c.String(),
                         Rate = c.Int(nullable: false),
-                        PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfileId = c.Guid(nullable: false),
+                        ProfileId = c.Guid(nullable: false),
                         CreatedOn = c.DateTime(),
                         CreatedBy = c.String(),
                         ModifiedOn = c.DateTime(),
                         ModifiedBy = c.String(),
+                        Profile_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.VideoGalleryId)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfileId, cascadeDelete: true)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfileId, cascadeDelete: true)
-                .Index(t => t.PersonalProfileId)
-                .Index(t => t.CompanyProfileId);
+                .ForeignKey("dbo.Profiles", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
             
             CreateTable(
                 "dbo.VideoGalleryFiles",
@@ -376,25 +360,6 @@ namespace DataLayer.Migrations
                 .PrimaryKey(t => t.VideoGalleryFileId)
                 .ForeignKey("dbo.VideoGalleries", t => t.VideoGalleryId, cascadeDelete: true)
                 .Index(t => t.VideoGalleryId);
-            
-            CreateTable(
-                "dbo.Contacts",
-                c => new
-                    {
-                        ContactId = c.Guid(nullable: false),
-                        AreaCode = c.Int(nullable: false),
-                        Number = c.Int(nullable: false),
-                        LocationType = c.Int(nullable: false),
-                        PhoneType = c.Int(nullable: false),
-                        AddressId = c.Guid(nullable: false),
-                        CreatedOn = c.DateTime(),
-                        CreatedBy = c.String(),
-                        ModifiedOn = c.DateTime(),
-                        ModifiedBy = c.String(),
-                    })
-                .PrimaryKey(t => t.ContactId)
-                .ForeignKey("dbo.Addresses", t => t.AddressId, cascadeDelete: true)
-                .Index(t => t.AddressId);
             
             CreateTable(
                 "dbo.ImageGalleryFiles",
@@ -443,14 +408,12 @@ namespace DataLayer.Migrations
                         OperationPlace = c.String(),
                         Employer = c.String(maxLength: 256),
                         Testimonial = c.String(),
-                        PersonalProfileId = c.Guid(nullable: false),
-                        CompanyProfileId = c.Guid(nullable: false),
+                        ProfileId = c.Guid(nullable: false),
+                        Profile_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ProjectId)
-                .ForeignKey("dbo.CompanyProfiles", t => t.CompanyProfileId, cascadeDelete: true)
-                .ForeignKey("dbo.PersonalProfiles", t => t.PersonalProfileId, cascadeDelete: true)
-                .Index(t => t.PersonalProfileId)
-                .Index(t => t.CompanyProfileId);
+                .ForeignKey("dbo.Profiles", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -468,83 +431,62 @@ namespace DataLayer.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.ProjectFiles", "ProjectId", "dbo.Projects");
+            DropForeignKey("dbo.Projects", "Profile_Id", "dbo.Profiles");
             DropForeignKey("dbo.ProductFiles", "Project_ProjectId", "dbo.Projects");
-            DropForeignKey("dbo.Projects", "PersonalProfileId", "dbo.PersonalProfiles");
-            DropForeignKey("dbo.Projects", "CompanyProfileId", "dbo.CompanyProfiles");
             DropForeignKey("dbo.ImageGalleryFiles", "ImageGalleryId", "dbo.ImageGalleries");
-            DropForeignKey("dbo.Contacts", "AddressId", "dbo.Addresses");
-            DropForeignKey("dbo.AspNetUsers", "CompanyProfile_CompanyProfileId", "dbo.CompanyProfiles");
-            DropForeignKey("dbo.CompanyProfiles", "MainCategoryId", "dbo.MainCategories");
             DropForeignKey("dbo.VideoGalleryFiles", "VideoGalleryId", "dbo.VideoGalleries");
-            DropForeignKey("dbo.VideoGalleries", "PersonalProfileId", "dbo.PersonalProfiles");
-            DropForeignKey("dbo.VideoGalleries", "CompanyProfileId", "dbo.CompanyProfiles");
-            DropForeignKey("dbo.AspNetUsers", "PersonalProfile_PersonalProfileId", "dbo.PersonalProfiles");
+            DropForeignKey("dbo.VideoGalleries", "Profile_Id", "dbo.Profiles");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Profiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Products", "UseLocationId", "dbo.UseLocations");
+            DropForeignKey("dbo.Products", "Profile_Id", "dbo.Profiles");
             DropForeignKey("dbo.ProductFiles", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.Products", "PersonalProfileId", "dbo.PersonalProfiles");
-            DropForeignKey("dbo.Products", "CompanyProfileId", "dbo.CompanyProfiles");
             DropForeignKey("dbo.Products", "BrandId", "dbo.Brands");
+            DropForeignKey("dbo.Portfolios", "Profile_Id", "dbo.Profiles");
             DropForeignKey("dbo.PortfolioFiles", "PortfolioId", "dbo.Portfolios");
-            DropForeignKey("dbo.Portfolios", "PersonalProfileId", "dbo.PersonalProfiles");
-            DropForeignKey("dbo.Portfolios", "CompanyProfileId", "dbo.CompanyProfiles");
-            DropForeignKey("dbo.PersonalProfiles", "MainCategoryId", "dbo.MainCategories");
-            DropForeignKey("dbo.PersonalProfiles", "MainCategory_MainCategoryId", "dbo.MainCategories");
-            DropForeignKey("dbo.CompanyProfiles", "MainCategory_MainCategoryId", "dbo.MainCategories");
-            DropForeignKey("dbo.MainCategories", "Parent_MainCategoryId", "dbo.MainCategories");
-            DropForeignKey("dbo.ImageGalleries", "PersonalProfileId", "dbo.PersonalProfiles");
+            DropForeignKey("dbo.Profiles", "MainCategoryId", "dbo.MainCategories");
+            DropForeignKey("dbo.Profiles", "MainCategory_MainCategoryId", "dbo.MainCategories");
+            DropForeignKey("dbo.MainCategories", "ParentId", "dbo.MainCategories");
+            DropForeignKey("dbo.ImageGalleries", "Profile_Id", "dbo.Profiles");
             DropForeignKey("dbo.ImageGalleries", "ImageGallery_ImageGalleryId", "dbo.ImageGalleries");
-            DropForeignKey("dbo.ImageGalleries", "CompanyProfileId", "dbo.CompanyProfiles");
-            DropForeignKey("dbo.Articles", "PersonalProfileId", "dbo.PersonalProfiles");
-            DropForeignKey("dbo.Addresses", "PersonalProfileId", "dbo.PersonalProfiles");
-            DropForeignKey("dbo.Articles", "CompanyProfileId", "dbo.CompanyProfiles");
+            DropForeignKey("dbo.Articles", "Profile_Id", "dbo.Profiles");
             DropForeignKey("dbo.ArticleFiles", "ArticleId", "dbo.Articles");
-            DropForeignKey("dbo.Addresses", "CompanyProfileId", "dbo.CompanyProfiles");
+            DropForeignKey("dbo.Addresses", "Profile_Id", "dbo.Profiles");
+            DropForeignKey("dbo.Contacts", "AddressId", "dbo.Addresses");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Projects", new[] { "CompanyProfileId" });
-            DropIndex("dbo.Projects", new[] { "PersonalProfileId" });
+            DropIndex("dbo.Projects", new[] { "Profile_Id" });
             DropIndex("dbo.ProjectFiles", new[] { "ProjectId" });
             DropIndex("dbo.ImageGalleryFiles", new[] { "ImageGalleryId" });
-            DropIndex("dbo.Contacts", new[] { "AddressId" });
             DropIndex("dbo.VideoGalleryFiles", new[] { "VideoGalleryId" });
-            DropIndex("dbo.VideoGalleries", new[] { "CompanyProfileId" });
-            DropIndex("dbo.VideoGalleries", new[] { "PersonalProfileId" });
+            DropIndex("dbo.VideoGalleries", new[] { "Profile_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", new[] { "CompanyProfile_CompanyProfileId" });
-            DropIndex("dbo.AspNetUsers", new[] { "PersonalProfile_PersonalProfileId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.ProductFiles", new[] { "Project_ProjectId" });
             DropIndex("dbo.ProductFiles", new[] { "ProductId" });
-            DropIndex("dbo.Products", new[] { "CompanyProfileId" });
-            DropIndex("dbo.Products", new[] { "PersonalProfileId" });
+            DropIndex("dbo.Products", new[] { "Profile_Id" });
             DropIndex("dbo.Products", new[] { "UseLocationId" });
             DropIndex("dbo.Products", new[] { "BrandId" });
             DropIndex("dbo.PortfolioFiles", new[] { "PortfolioId" });
-            DropIndex("dbo.Portfolios", new[] { "CompanyProfileId" });
-            DropIndex("dbo.Portfolios", new[] { "PersonalProfileId" });
-            DropIndex("dbo.MainCategories", new[] { "Parent_MainCategoryId" });
+            DropIndex("dbo.Portfolios", new[] { "Profile_Id" });
+            DropIndex("dbo.MainCategories", new[] { "ParentId" });
+            DropIndex("dbo.ImageGalleries", new[] { "Profile_Id" });
             DropIndex("dbo.ImageGalleries", new[] { "ImageGallery_ImageGalleryId" });
-            DropIndex("dbo.ImageGalleries", new[] { "CompanyProfileId" });
-            DropIndex("dbo.ImageGalleries", new[] { "PersonalProfileId" });
-            DropIndex("dbo.PersonalProfiles", new[] { "MainCategory_MainCategoryId" });
-            DropIndex("dbo.PersonalProfiles", new[] { "MainCategoryId" });
             DropIndex("dbo.ArticleFiles", new[] { "ArticleId" });
-            DropIndex("dbo.Articles", new[] { "CompanyProfileId" });
-            DropIndex("dbo.Articles", new[] { "PersonalProfileId" });
-            DropIndex("dbo.CompanyProfiles", new[] { "MainCategory_MainCategoryId" });
-            DropIndex("dbo.CompanyProfiles", new[] { "MainCategoryId" });
-            DropIndex("dbo.Addresses", new[] { "CompanyProfileId" });
-            DropIndex("dbo.Addresses", new[] { "PersonalProfileId" });
+            DropIndex("dbo.Articles", new[] { "Profile_Id" });
+            DropIndex("dbo.Profiles", new[] { "MainCategory_MainCategoryId" });
+            DropIndex("dbo.Profiles", new[] { "MainCategoryId" });
+            DropIndex("dbo.Profiles", new[] { "Id" });
+            DropIndex("dbo.Contacts", new[] { "AddressId" });
+            DropIndex("dbo.Addresses", new[] { "Profile_Id" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Projects");
             DropTable("dbo.ProjectFiles");
             DropTable("dbo.ImageGalleryFiles");
-            DropTable("dbo.Contacts");
             DropTable("dbo.VideoGalleryFiles");
             DropTable("dbo.VideoGalleries");
             DropTable("dbo.AspNetUserRoles");
@@ -559,10 +501,10 @@ namespace DataLayer.Migrations
             DropTable("dbo.Portfolios");
             DropTable("dbo.MainCategories");
             DropTable("dbo.ImageGalleries");
-            DropTable("dbo.PersonalProfiles");
             DropTable("dbo.ArticleFiles");
             DropTable("dbo.Articles");
-            DropTable("dbo.CompanyProfiles");
+            DropTable("dbo.Profiles");
+            DropTable("dbo.Contacts");
             DropTable("dbo.Addresses");
         }
     }

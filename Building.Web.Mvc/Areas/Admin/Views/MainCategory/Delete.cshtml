@@ -1,0 +1,28 @@
+﻿@model DomainClasses.Models.MainCategory
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="alert alert-block alert-danger">
+        <div class="alert alert-block alert-warning">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+
+            <p>توجه داشته باشید با حذف این شاخه تمام زیر شاخه ها نیز حذف خواهد شد .</p>
+        </div>
+        <p>
+            <strong>
+                <i class="ace-icon fa fa-close"></i>
+                آیا از حذف دسته <strong class="bolder">(@Model.Name)</strong> اطمینان دارید ؟
+            </strong>
+
+        </p>
+        <p>
+            <input type="submit" value="حذف" class="btn btn-sm btn-danger"/>
+            <button class="btn btn-sm" data-dismiss="modal" aria-label="Close">لغو کردن</button>
+        </p>
+    </div>
+
+}
+

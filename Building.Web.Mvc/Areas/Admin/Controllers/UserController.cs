@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -22,16 +23,19 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
     {
         private IUnitOfWork _uow;
         private IUsersManager _users;
+        private IProfile _profile;
+        private IMainCategory _mainCategory;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         private ApplicationDbContext context = new ApplicationDbContext();
 
-        public UserController(IUnitOfWork uow, IUsersManager users)
+        public UserController(IUnitOfWork uow, IUsersManager users, IProfile profile, IMainCategory mainCategory)
         {
             _uow = uow;
             _users = users;
-
+            _profile = profile;
+            _mainCategory = mainCategory;
         }
 
         public UserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -72,7 +76,7 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             return View(list);
         }
 
-        public ActionResult Detail(string id)
+        public virtual ActionResult Detail(string id)
         {
             var user = UserManager.FindById(id);
             return View(user);
@@ -145,7 +149,7 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
         }
 
         ///[Authorize(Roles = "administrator")]
-        public ActionResult UserConfirmationByAdmin(string Id)
+        public virtual ActionResult UserConfirmationByAdmin(string Id)
         {
             var user = UserManager.FindById(Id);
             if (user == null)
@@ -165,7 +169,7 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
         }
         //[Authorize(Roles = "administrator")]
         [ValidateAntiForgeryToken]
-        public ActionResult UserConfirmation(string id)
+        public virtual ActionResult UserConfirmation(string id)
         {
 
             var user = UserManager.FindById(id);
@@ -194,17 +198,86 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             return RedirectToAction("UserConfirmationByAdmin");
         }
 
+        public virtual ActionResult AddProfile(string id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("BadRequest", "Error", new { area = "" });
+            }
+            var user = UserManager.FindById(id);
+            if (user == null)
+            {
+                return RedirectToAction("NotFound", "Error", new { area = "" });
+            }
+
+            if (user.Profile == null)
+            {
+                Profile addModel = new Profile
+                {
+                    Id = id,
+                };
+                ViewBag.MainCategoryId = new SelectList(_mainCategory.GetAll().Where(c => c.MarkAsDelete != true), "MainCategoryId", "Name",-1);
+
+                return View(addModel);
+            }
+            Profile model = new Profile
+            {
+                Id = id,
+                MainCategoryId = user.Profile.MainCategoryId,
+                FirstName = user.Profile.FirstName,
+                LastName = user.Profile.LastName,
+                BirthDate = user.Profile.BirthDate,
+                Comment = user.Profile.Comment,
+                FieldOfActivity = user.Profile.FieldOfActivity,
+                Gender = user.Profile.Gender,
+                CompanyName = user.Profile.CompanyName,
+                ProfilePicture = user.Profile.ProfilePicture,
+                ProfileType = user.Profile.ProfileType,
+                RegistrationNumber = user.Profile.RegistrationNumber,
+                SocialInstagram = user.Profile.SocialInstagram,
+                SocialFacebok = user.Profile.SocialFacebok,
+                SocialGooglePlus = user.Profile.SocialFacebok,
+                SocialTelegram = user.Profile.SocialTelegram,
+                SocialTwiter = user.Profile.SocialTelegram,
+            };
+            ViewBag.MainCategoryId = new SelectList(_mainCategory.GetAll().Where(c => c.MarkAsDelete != true), "MainCategoryId", "Name", model.MainCategoryId);
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult AddProfile(
+            [Bind(Include = "Id,Gender,FirstName,LastName,ProfilePicture,BirthDateString,SocialGooglePlus,SocialFacebok,SocialTwiter,SocialTelegram,SocialInstagram,MainCategoryId,Comment,ProfileType,CompanyName,RegistrationNumber,FieldOfActivity")]
+            Profile profile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (profile.ProfilePicture != null)
+                {
+                    string sourceFile = Server.MapPath("~/App_Data/ImageTemp/" + profile.ProfilePicture);
+                    string destinationFile = Server.MapPath("~/Uploads/Profile/" + profile.ProfilePicture);
+                    if (System.IO.File.Exists(sourceFile))
+                    {
+                      System.IO.File.Move(sourceFile, destinationFile);
+                    }
+                }
+                
+                _profile.AddOrUpdate(profile);
+                _uow.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(profile);
+        }
 
         //
         [Authorize(Roles = "administrator")]
         [HttpPost]
         [OutputCache(Location = System.Web.UI.OutputCacheLocation.None, NoStore = true)]
-        public ActionResult CheckUserName(string UserName)
+        public virtual ActionResult CheckUserName(string UserName)
         {
             if (0 == context.Users.Where(p => p.UserName == UserName).Count()) return Json(true);
             return Json(false);
         }
-
 
         public virtual ActionResult Delete(string id)
         {

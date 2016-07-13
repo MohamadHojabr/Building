@@ -1,0 +1,410 @@
+﻿@model DomainClasses.Models.Profile
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin/AdminLayuot.cshtml";
+}
+<div id="user-profile-3" class="user-profile row">
+<div class="col-sm-offset-1 col-sm-10">
+<div class="well well-sm">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="center" style="width: 400px; margin: 12px;">
+                <h3 class="header blue smaller lighter">
+                    تصویر پروفایل
+                </h3>
+                <form id="uploadImageForm" method="post" action="/Admin/Dashboard/SaveUploadedImage">
+                    <input type="file" name="avatar"/>
+
+                    <div class="hr hr-12 dotted"></div>
+
+                    <button type="submit" class="btn btn-sm btn-primary">درج</button>
+                    <button type="reset" class="btn btn-sm">لغو</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <img width="400" src="@Model.PictureUrl" class="img img-thumbnail"/>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("AddProfile", "User", FormMethod.Post, new {@class = "form-horizontal"}))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(p => p.Id)
+    @Html.HiddenFor(model => model.ProfilePicture)
+    @Html.ValidationSummary(true)
+    <div class="tabbable">
+        <ul class="nav nav-tabs padding-16">
+            <li class="active">
+                <a data-toggle="tab" href="#">
+                    <i class="green ace-icon fa fa-pencil-square-o bigger-125"></i>
+                    ویرایش پروفایل
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content profile-edit-tab-content">
+            <div id="edit-basic" class="tab-pane in active">
+
+
+                <h4 class="header blue bolder smaller">اطلاعات کلی</h4>
+
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.FirstName, new { @class = "col-sm-3 control-label no-padding-right" })
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.FirstName)
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                            <div class="space-4"></div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LastName, new { @class = "col-sm-3 control-label no-padding-right" })
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.LastName)
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                <hr/>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthDateString, new {@class = "col-sm-3 control-label no-padding-right"})
+                    <div class="col-sm-9">
+                        <div class="input-medium">
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.BirthDateString, new {htmlAttributes = new {@class = "datepicker input-medium date-picker", id = "datepicker", onclick = "PersianDatePicker.Show(datepicker)"}})
+                                @Html.ValidationMessageFor(model => model.BirthDateString, "", new {@class = "text-danger"})
+                                <span class="input-group-addon">
+                                            <i class="ace-icon fa fa-calendar"></i>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-4"></div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">جنسیت</label>
+                    <div class="col-sm-9">
+                        @Html.EnumDropDownListFor(model => model.Gender)
+                        @Html.ValidationMessageFor(model => model.Gender, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="space-4"></div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comment, new {@class = "col-sm-3 control-label no-padding-right"})
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.Comment)
+                        @Html.ValidationMessageFor(model => model.Comment, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="space"></div>
+                <div class="hidden">
+                    <h4 class="header blue bolder smaller">اطلاعات شرکت</h4>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-email">Email</label>
+
+                        <div class="col-sm-9">
+                            <span class="input-icon input-icon-right">
+                                    <input type="email" id="form-field-email" value="alexdoe@gmail.com" />
+                                    <i class="ace-icon fa fa-envelope"></i>
+                                </span>
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-website">Website</label>
+
+                        <div class="col-sm-9">
+                            <span class="input-icon input-icon-right">
+                                    <input type="url" id="form-field-website" value="http://www.alexdoe.com/" />
+                                    <i class="ace-icon fa fa-globe"></i>
+                                </span>
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-phone">Phone</label>
+
+                        <div class="col-sm-9">
+                            <span class="input-icon input-icon-right">
+                                    <input class="input-medium input-mask-phone" type="text" id="form-field-phone" />
+                                    <i class="ace-icon fa fa-phone fa-flip-horizontal"></i>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+                <h4 class="header blue bolder smaller">شبکه های اجتماعی</h4>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SocialFacebok, new {@class = "col-sm-3 control-label no-padding-right"})
+                    <div class="col-sm-9">
+                        <span class="input-icon">
+                                @Html.TextBoxFor(model => model.SocialFacebok)
+                                @Html.ValidationMessageFor(model => model.SocialFacebok, "", new {@class = "text-danger"})
+                                    <i class="ace-icon fa fa-facebook blue"></i>
+                                </span>
+                    </div>
+                </div>
+
+                <div class="space-4"></div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SocialGooglePlus, new { @class = "col-sm-3 control-label no-padding-right" })
+                    <div class="col-sm-9">
+                        <span class="input-icon">
+                            @Html.TextBoxFor(model => model.SocialGooglePlus)
+                            @Html.ValidationMessageFor(model => model.SocialGooglePlus, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-google-plus red"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="space-4"></div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SocialTwiter, new { @class = "col-sm-3 control-label no-padding-right" })
+                    <div class="col-sm-9">
+                        <span class="input-icon">
+                            @Html.TextBoxFor(model => model.SocialTwiter)
+                            @Html.ValidationMessageFor(model => model.SocialTwiter, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-twitter light-blue"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="space-4"></div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SocialInstagram, new { @class = "col-sm-3 control-label no-padding-right" })
+                    <div class="col-sm-9">
+                        <span class="input-icon">
+                            @Html.TextBoxFor(model => model.SocialInstagram)
+                            @Html.ValidationMessageFor(model => model.SocialInstagram, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-instagram"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="space-4"></div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SocialTelegram, new {@class = "col-sm-3 control-label no-padding-right"})
+                    <div class="col-sm-9">
+                        <span class="input-icon">
+                            @Html.TextBoxFor(model => model.SocialTelegram)
+                            @Html.ValidationMessageFor(model => model.SocialTelegram, "", new {@class = "text-danger"})
+                            <i class="ace-icon fa fa-paper-plane light-blue"></i>
+                        </span>
+                    </div>
+                </div>
+
+
+                <h4 class="header blue bolder smaller">نوع پروفایل</h4>
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        @Html.LabelFor(model => model.MainCategoryId, "رسته کاری", new { @class = "control-label col-md-4" })
+                        @Html.DropDownList("MainCategoryId", null, "-انتخاب نمایید-", new { @class = "" })
+                        @Html.ValidationMessageFor(model => model.MainCategoryId, "", new { @class = "text-danger" })
+
+
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.ProfileType, new { @class = "control-label col-md-4" })
+                        @Html.EnumDropDownListFor(model => model.ProfileType)
+                        @Html.ValidationMessageFor(model => model.ProfileType, "", new { @class = "text-danger" })
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <input type="submit" class="btn btn-info" value="درج"/>
+
+            &nbsp; &nbsp;
+            <input type="reset" class="btn" value="پاک کردن فرم"/>
+     
+           </div>
+    </div>
+}
+</div><!-- /.span -->
+</div><!-- /.user-profile -->
+@section scripts{
+@Scripts.Render("~/bundles/jqueryval")
+    <link href="~/Content/Plugins/PersianDatePicker/css/PersianDatePicker.min.css" rel="stylesheet"/>
+    <script src="~/Content/Plugins/PersianDatePicker/js/PersianDatePicker.js"></script>
+}
+
+@section scriptsRelatedToPage{
+
+    <script type="text/javascript">
+
+        $(function() {
+            var $form = $('#uploadImageForm');
+            var file_input = $form.find('input[type=file]');
+            var upload_in_progress = false;
+
+            file_input.ace_file_input({
+                style: 'well',
+                btn_choose: 'فایل مورد نظر خود را انتخاب یا اینجا رها کنید',
+                btn_change: null,
+                droppable: true,
+                thumbnail: 'large',
+                before_remove: function() {
+                    if (upload_in_progress)
+                        return false; //if we are in the middle of uploading a file, don't allow resetting file input
+                    return true;
+                },
+                before_change: function(files, dropped) {
+                    var file = files[0];
+                    if (typeof file == "string") { //files is just a file name here (in browsers that don't support FileReader API)
+                        if (! (/\.(jpe?g|png|gif)$/i).test(file)) {
+                            alert('Please select an image file!');
+                            return false;
+                        }
+                    } else {
+                        var type = $.trim(file.type);
+                        if ((type.length > 0 && ! (/^image\/(jpe?g|png|gif)$/i).test(type))
+                                || (type.length == 0 && ! (/\.(jpe?g|png|gif)$/i).test(file.name)) //for android's default browser!
+                        ) {
+                            alert('Please select an image file!');
+                            return false;
+                        }
+                        if (file.size > 110000) { //~100Kb
+                            alert('File size should not exceed 100Kb!');
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            });
+
+
+            $form.on('submit', function() {
+                var submit_url = $form.attr('action');
+                if (!file_input.data('ace_input_files')) return false; //no files selected
+
+                var deferred;
+                if ("FormData" in window) {
+                    //for modern browsers that support FormData and uploading files via ajax
+                    var fd = new FormData($form.get(0));
+
+                    //if file has been drag&dropped , append it to FormData
+                    if (file_input.data('ace_input_method') == 'drop') {
+                        var files = file_input.data('ace_input_files');
+                        if (files && files.length > 0) {
+                            fd.append(file_input.attr('name'), files[0]);
+                            //to upload multiple files, the 'name' attribute should be something like this: myfile[]
+                        }
+                    }
+                    upload_in_progress = true;
+                    deferred = $.ajax({
+                        url: submit_url,
+                        type: $form.attr('method'),
+                        processData: false,
+                        contentType: false,
+                        dataType: 'json',
+                        data: fd,
+                        xhr: function() {
+                            var req = $.ajaxSettings.xhr();
+                            if (req && req.upload) {
+                                req.upload.addEventListener('progress', function(e) {
+                                    if (e.lengthComputable) {
+                                        var done = e.loaded || e.position, total = e.total || e.totalSize;
+                                        var percent = parseInt((done / total) * 100) + '%';
+                                        //percentage of uploaded file
+                                    }
+                                }, false);
+                            }
+                            return req;
+                        },
+                        beforeSend: function() {
+                        },
+                        success: function() {
+
+                        }
+                    });
+                } else {
+                    //for older browsers that don't support FormData and uploading files via ajax
+                    //we use an iframe to upload the form(file) without leaving the page
+                    upload_in_progress = true;
+                    deferred = new $.Deferred;
+                    var iframe_id = 'temporary-iframe-' + (new Date()).getTime() + '-' + (parseInt(Math.random() * 1000));
+                    $form.after('<iframe id="' + iframe_id + '" name="' + iframe_id + '" frameborder="0" width="0" height="0" src="about:blank" style="position:absolute;z-index:-1;"></iframe>');
+                    $form.append('<input type="hidden" name="temporary-iframe-id" value="' + iframe_id + '" />');
+                    $form.next().data('deferrer', deferred); //save the deferred object to the iframe
+                    $form.attr({
+                        'method': 'POST',
+                        'enctype': 'multipart/form-data',
+                        'target': iframe_id,
+                        'action': submit_url
+                    });
+                    $form.get(0).submit();
+
+                    //if we don't receive the response after 60 seconds, declare it as failed!
+                    setTimeout(function() {
+                        var iframe = document.getElementById(iframe_id);
+                        if (iframe != null) {
+                            iframe.src = "about:blank";
+                            $(iframe).remove();
+
+                            deferred.reject({ 'status': 'fail', 'message': 'Timeout!' });
+                        }
+                    }, 60000);
+                }
+
+
+                ////////////////////////////
+                deferred.done(function(result) {
+                    upload_in_progress = false;
+
+                    if (result.status == 'OK') {
+                        console.log(result.data.FileName);
+                        document.getElementById("ProfilePicture").value = result.data.NewFileName;
+                        alert("File successfully saved. Thumbnail is: " + result.url);
+                    } else {
+                        console.log(result.FileName);
+                        alert("File not saved. " + result.message);
+                    }
+                }).fail(function(res) {
+                    upload_in_progress = false;
+                    alert("There was an error");
+                    //console.log(result.responseText);
+                });
+                deferred.promise();
+                return false;
+            });
+
+            $form.on('reset', function() {
+                file_input.ace_file_input('reset_input');
+            });
+            if (location.protocol == 'file:') alert("For uploading to server, you should access this page using a webserver.");
+        });
+    </script>
+}
+
+

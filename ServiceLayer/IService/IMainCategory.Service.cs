@@ -11,7 +11,7 @@ namespace ServiceLayer.IService
     {
         void AddOrUpdate(MainCategory mainCategory);
         void Delete(MainCategory mainCategory);
-        MainCategory Find(int id);
+        MainCategory Find(Guid id);
         IList<MainCategory> GetAll();
 
     }

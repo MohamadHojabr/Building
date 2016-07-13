@@ -34,26 +34,7 @@ namespace Building.Web.Mvc
     .Include(
                 "~" + Links.Content.AdminTheme.dist.css.ace_min_css,
                 "~" + Links.Content.AdminTheme.dist.css.ace_rtl_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.bootstrap_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.bootstrap_datetimepicker_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.bootstrap_duallistbox_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.bootstrap_editable_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.bootstrap_multiselect_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.bootstrap_timepicker_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.bootstrap_datepicker3_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.jquery_ui_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.jquery_gritter_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.jquery_ui_custom_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.chosen_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.colorbox_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.colorpicker_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.daterangepicker_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.fullcalendar_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.dropzone_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.prettify_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.select2_min_css,
-                "~" + Links.Content.AdminTheme.dist.css.ui_jqgrid_min_css,
-                "~/fonts/font-awesome-4.6.3/css/font-awesome.min.css"
+                "~" + Links.Content.Plugins.PersianDatePicker.css.PersianDatePicker_min_css
                 ));
 
             bundles.Add(new ScriptBundle("~/admin/common/script").Include(
@@ -97,6 +78,11 @@ namespace Building.Web.Mvc
                 "~" + Content.AdminTheme.dist.js.dataTables.extensions.buttons.buttons_html5_min_js,
                 "~" + Content.AdminTheme.dist.js.dataTables.extensions.buttons.buttons_print_min_js,
                 "~" + Content.AdminTheme.dist.js.dataTables.extensions.@select.dataTables_select_min_js
+                ));
+
+            bundles.Add(new ScriptBundle("~/admin/component/persianDatePicker/js").Include(
+                //PERSIAN_DATE_PICKER
+                "~" + Content.Plugins.PersianDatePicker.js.PersianDatePicker_min_js
                 ));
 
             //<<--VALIDETTA_COMPONENT

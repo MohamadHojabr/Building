@@ -1,0 +1,65 @@
+﻿
+@model DomainClasses.Models.MainCategory
+@Scripts.Render("~/admin/component/validetta/js")
+@Styles.Render("~/admin/component/validetta/css")
+
+
+<div class="alert alert-block alert-success">
+    <p>
+        <strong>
+            <i class="ace-icon fa fa-pencil"></i>
+            ویرایش
+        </strong>
+
+    </p>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.MainCategoryId)
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @data_validetta = "required" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Describtion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Describtion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Describtion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ParentId" class="control-label col-md-2">دسته بالا تر</label>
+           
+                     <div class="col-md-10">
+                    @Html.DropDownList("ParentId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Parent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <hr />
+            <p>
+                <input type="submit" value="ویرایش" class="btn btn-sm btn-success" />
+                <button class="btn btn-sm" data-dismiss="modal" aria-label="Close">لغو کردن</button>
+            </p>
+        </div>
+    }
+</div>
+
+
+<script>
+        $(document).ready(function () {
+            $("form").validetta({
+                bubblePosition: 'bottom',
+                bubbleGapTop: 10,
+                bubbleGapLeft: -5
+            });
+        });
+</script>

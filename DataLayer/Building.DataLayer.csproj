@@ -64,21 +64,21 @@
   <ItemGroup>
     <Compile Include="Context\Context.cs" />
     <Compile Include="Context\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201607020731235_first .cs" />
-    <Compile Include="Migrations\201607020731235_first .Designer.cs">
-      <DependentUpon>201607020731235_first .cs</DependentUpon>
+    <Compile Include="Migrations\201607111258567_initial.cs" />
+    <Compile Include="Migrations\201607111258567_initial.Designer.cs">
+      <DependentUpon>201607111258567_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607050628031_edit context.cs" />
-    <Compile Include="Migrations\201607050628031_edit context.Designer.cs">
-      <DependentUpon>201607050628031_edit context.cs</DependentUpon>
+    <Compile Include="Migrations\201607121022456_initial1.cs" />
+    <Compile Include="Migrations\201607121022456_initial1.Designer.cs">
+      <DependentUpon>201607121022456_initial1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607100726342_add new profile structure.cs" />
-    <Compile Include="Migrations\201607100726342_add new profile structure.Designer.cs">
-      <DependentUpon>201607100726342_add new profile structure.cs</DependentUpon>
+    <Compile Include="Migrations\201607130230514_initial2.cs" />
+    <Compile Include="Migrations\201607130230514_initial2.Designer.cs">
+      <DependentUpon>201607130230514_initial2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607101347506_qaz.cs" />
-    <Compile Include="Migrations\201607101347506_qaz.Designer.cs">
-      <DependentUpon>201607101347506_qaz.cs</DependentUpon>
+    <Compile Include="Migrations\201607130245059_initial3.cs" />
+    <Compile Include="Migrations\201607130245059_initial3.Designer.cs">
+      <DependentUpon>201607130245059_initial3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,17 +94,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607020731235_first .resx">
-      <DependentUpon>201607020731235_first .cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607111258567_initial.resx">
+      <DependentUpon>201607111258567_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607050628031_edit context.resx">
-      <DependentUpon>201607050628031_edit context.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607121022456_initial1.resx">
+      <DependentUpon>201607121022456_initial1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607100726342_add new profile structure.resx">
-      <DependentUpon>201607100726342_add new profile structure.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607130230514_initial2.resx">
+      <DependentUpon>201607130230514_initial2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607101347506_qaz.resx">
-      <DependentUpon>201607101347506_qaz.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607130245059_initial3.resx">
+      <DependentUpon>201607130245059_initial3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

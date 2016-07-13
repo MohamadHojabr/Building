@@ -219,6 +219,18 @@
     <Compile Include="Admin.AddressController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin.ArticlesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.DashboardController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.MainCategoryController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.ProfileController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Admin.RoleController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -236,6 +248,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AddressController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
@@ -425,11 +439,44 @@
     <Content Include="Content\AdminTheme\wysiwyg.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\default.htm" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\scripts\jquery-1.6.2.min.js" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\scripts\jquery.ui.datepicker-cc.all.min.js" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\calendar.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_highlight-hard_20_0972a5_1x100.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_highlight-soft_33_003147_1x100.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_highlight-soft_35_222222_1x100.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_highlight-soft_44_444444_1x100.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-bg_loop_25_000000_21x21.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-icons_a83300_256x240.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Plugins\jquery.ui.datepicker1.8.14-cc\styles\jquery-ui-1.8.14.css" />
     <Content Include="Content\Plugins\jquery.validetta\validetta.css" />
     <Content Include="Content\Plugins\jquery.validetta\validetta.js" />
     <Content Include="Content\Plugins\jquery.validetta\validetta.min.css" />
     <Content Include="Content\Plugins\jquery.validetta\validetta.min.js" />
     <Content Include="Content\Plugins\jquery.validetta\validettaLang-fa-IR.js" />
+    <Content Include="Content\Plugins\PersianDatePicker\css\PersianDatePicker.css" />
+    <Content Include="Content\Plugins\PersianDatePicker\css\PersianDatePicker.min.css" />
+    <Content Include="Content\Plugins\PersianDatePicker\js\PersianDatePicker.js" />
+    <Content Include="Content\Plugins\PersianDatePicker\js\PersianDatePicker.min.js" />
+    <Content Include="Content\Plugins\pwDatePicker\css\persian-datepicker-0.4.5.css" />
+    <Content Include="Content\Plugins\pwDatePicker\css\persian-datepicker-0.4.5.min.css" />
+    <Content Include="Content\Plugins\pwDatePicker\css\theme\persian-datepicker-blue.css" />
+    <Content Include="Content\Plugins\pwDatePicker\css\theme\persian-datepicker-cheerup.css" />
+    <Content Include="Content\Plugins\pwDatePicker\css\theme\persian-datepicker-dark.css" />
+    <Content Include="Content\Plugins\pwDatePicker\css\theme\persian-datepicker-redblack.css" />
+    <Content Include="Content\Plugins\pwDatePicker\index.html" />
+    <Content Include="Content\Plugins\pwDatePicker\js\persian-date.js" />
+    <Content Include="Content\Plugins\pwDatePicker\js\persian-datepicker-0.4.5.js" />
+    <Content Include="Content\Plugins\pwDatePicker\js\persian-datepicker-0.4.5.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome-4.6.3\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.6.3\css\font-awesome.min.css" />
@@ -476,6 +523,12 @@
     <Content Include="App_Code\ViewHelpers.cshtml" />
     <Content Include="Areas\Admin\Views\MainCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\MainCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MainCategory\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\MainCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MainCategory\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\User\AddProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -546,6 +599,7 @@
     <Folder Include="Uploads\Article\" />
     <Folder Include="Uploads\ImageGallery\" />
     <Folder Include="Uploads\Portfolio\" />
+    <Folder Include="Uploads\Profile\" />
     <Folder Include="Uploads\Project\" />
     <Folder Include="Uploads\VideoGallery\" />
   </ItemGroup>

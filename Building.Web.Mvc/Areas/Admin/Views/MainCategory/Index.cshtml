@@ -9,32 +9,39 @@
 }
 
 
-<div class="dd" id="treeview">
+<div class="dd dd-nodrag" id="treeview">
    @ViewHelpers.RenderCategories(Model)
 
 </div>
 
 @section scripts{
     <!-- page specific plugin scripts -->
-<script src="~/Content/AdminTheme/dist/js/jquery.nestable.min.js"></script>
+    <script src="~/Content/AdminTheme/dist/js/jquery.nestable.min.js"></script>
+
 }
 
 @section scriptsRelatedToPage{
 
 
-<script type="text/javascript">
-			jQuery(function($){
+    <script type="text/javascript">
+        jQuery(function($) {
 
-				$('.dd').nestable();
+            $('.dd').nestable({
+                collapsedClass: 'dd-collapsed',
+                noDragClass: "dd-nodrag"
+            }).nestable('collapseAll');//Add this line
 
-				$('.dd-handle a').on('mousedown', function(e){
-					e.stopPropagation();
-				});
+            $('.dd-handle a').on('mousedown', function(e) {
+                e.stopPropagation();
+                return false;
+            });
 
-				$('[data-rel="tooltip"]').tooltip();
+            $('[data-rel="tooltip"]').tooltip();
 
-			});
-</script>
+        });
+    </script>
+
+
 }
 
 

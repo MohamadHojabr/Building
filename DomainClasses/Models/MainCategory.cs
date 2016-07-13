@@ -36,6 +36,7 @@ namespace DomainClasses.Models
         [AllowHtml]
 
         public string Describtion { get; set; }
+        public bool MarkAsDelete { get; set; }
 
         [NotMapped]
         public bool Checked { get; set; }

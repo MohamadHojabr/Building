@@ -104,6 +104,10 @@
                                             <a class="jq-btn red" data-url="@Url.Action("Delete", "User", new {area = "Admin", id = @item.Id})" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                             </a>
+                                            <a class="jq-btn green" href="@Url.Action("AddProfile", "User", new {area = "Admin", id = @item.Id})">
+                                                <i class="ace-icon fa fa-file-text-o bigger-130"></i>
+                                            </a>
+
                                         </div>
 
                                         <div class="hidden-md hidden-lg">

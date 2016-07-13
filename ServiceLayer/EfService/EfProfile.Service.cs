@@ -15,10 +15,12 @@ namespace ServiceLayer.EfService
     {
         IUnitOfWork _ouw;
         IDbSet<Profile> _profiles;
+        private IUsersManager UsersManager;
 
-        public EfProfile(IUnitOfWork ouw)
+        public EfProfile(IUnitOfWork ouw, IUsersManager usersManager)
         {
             _ouw = ouw;
+            UsersManager = usersManager;
             _profiles = _ouw.Set<Profile>();
         }
 
@@ -44,7 +46,8 @@ namespace ServiceLayer.EfService
 
         public IList<Profile> GetAll()
         {
-            var list = _profiles.ToList();
+            var list = _profiles.Include(p=>p.RelatedUser).ToList();
+            var relatedUser = UsersManager.GetAllUsers();
             return list;
         }
 

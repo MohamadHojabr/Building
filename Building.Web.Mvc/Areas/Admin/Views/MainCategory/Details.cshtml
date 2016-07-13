@@ -1,0 +1,55 @@
+﻿@model DomainClasses.Models.MainCategory
+<div class="alert alert-block alert-info">
+    <p>
+        <strong>
+            <i class="ace-icon fa fa-info-circle"></i>
+            جزئیات
+        </strong>
+
+    </p>
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                نام دسته بالا تر
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Parent.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Describtion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Describtion)
+            </dd>
+
+        </dl>
+        <ul class="list-inline">
+            <li>
+                <i class="ace-icon fa fa-user bigger-110"></i>
+                @Html.DisplayNameFor(model => model.CreatedBy) : @Html.DisplayFor(model => model.CreatedBy)
+            </li>
+            <li>
+                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                @Html.DisplayNameFor(model => model.CreatedOnPersian) : @Html.DisplayFor(model => model.CreatedOnPersian)
+            </li>
+
+        </ul>
+    </div>
+    <hr />
+    <p>
+        <button class="btn btn-sm" data-dismiss="modal" aria-label="Close">بازگشت</button>
+    </p>
+
+</div>

@@ -58,9 +58,51 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Detail()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Detail);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult ChangePassword()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ChangePassword);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult UserConfirmationByAdmin()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UserConfirmationByAdmin);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult UserConfirmation()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UserConfirmation);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult AddProfile()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddProfile);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CheckUserName()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckUserName);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Delete()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteConfirmed()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -79,17 +121,41 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string Detail = "Detail";
             public readonly string ChangePassword = "ChangePassword";
+            public readonly string Create = "Create";
+            public readonly string UserConfirmationByAdmin = "UserConfirmationByAdmin";
+            public readonly string UserConfirmation = "UserConfirmation";
+            public readonly string AddProfile = "AddProfile";
+            public readonly string CheckUserName = "CheckUserName";
+            public readonly string Delete = "Delete";
+            public readonly string DeleteConfirmed = "Delete";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string Detail = "Detail";
             public const string ChangePassword = "ChangePassword";
+            public const string Create = "Create";
+            public const string UserConfirmationByAdmin = "UserConfirmationByAdmin";
+            public const string UserConfirmation = "UserConfirmation";
+            public const string AddProfile = "AddProfile";
+            public const string CheckUserName = "CheckUserName";
+            public const string Delete = "Delete";
+            public const string DeleteConfirmed = "Delete";
         }
 
 
+        static readonly ActionParamsClass_Detail s_params_Detail = new ActionParamsClass_Detail();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Detail DetailParams { get { return s_params_Detail; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Detail
+        {
+            public readonly string id = "id";
+        }
         static readonly ActionParamsClass_ChangePassword s_params_ChangePassword = new ActionParamsClass_ChangePassword();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_ChangePassword ChangePasswordParams { get { return s_params_ChangePassword; } }
@@ -98,6 +164,63 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
         {
             public readonly string id = "id";
             public readonly string usermodel = "usermodel";
+        }
+        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Create
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_UserConfirmationByAdmin s_params_UserConfirmationByAdmin = new ActionParamsClass_UserConfirmationByAdmin();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_UserConfirmationByAdmin UserConfirmationByAdminParams { get { return s_params_UserConfirmationByAdmin; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_UserConfirmationByAdmin
+        {
+            public readonly string Id = "Id";
+        }
+        static readonly ActionParamsClass_UserConfirmation s_params_UserConfirmation = new ActionParamsClass_UserConfirmation();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_UserConfirmation UserConfirmationParams { get { return s_params_UserConfirmation; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_UserConfirmation
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_AddProfile s_params_AddProfile = new ActionParamsClass_AddProfile();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddProfile AddProfileParams { get { return s_params_AddProfile; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddProfile
+        {
+            public readonly string id = "id";
+            public readonly string profile = "profile";
+        }
+        static readonly ActionParamsClass_CheckUserName s_params_CheckUserName = new ActionParamsClass_CheckUserName();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CheckUserName CheckUserNameParams { get { return s_params_CheckUserName; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CheckUserName
+        {
+            public readonly string UserName = "UserName";
+        }
+        static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Delete
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_DeleteConfirmed s_params_DeleteConfirmed = new ActionParamsClass_DeleteConfirmed();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteConfirmed DeleteConfirmedParams { get { return s_params_DeleteConfirmed; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteConfirmed
+        {
+            public readonly string id = "id";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -109,11 +232,21 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string AddProfile = "AddProfile";
                 public readonly string ChangePassword = "ChangePassword";
+                public readonly string Create = "Create";
+                public readonly string Delete = "Delete";
+                public readonly string Detail = "Detail";
                 public readonly string Index = "Index";
+                public readonly string UserConfirmationByAdmin = "UserConfirmationByAdmin";
             }
+            public readonly string AddProfile = "~/Areas/Admin/Views/User/AddProfile.cshtml";
             public readonly string ChangePassword = "~/Areas/Admin/Views/User/ChangePassword.cshtml";
+            public readonly string Create = "~/Areas/Admin/Views/User/Create.cshtml";
+            public readonly string Delete = "~/Areas/Admin/Views/User/Delete.cshtml";
+            public readonly string Detail = "~/Areas/Admin/Views/User/Detail.cshtml";
             public readonly string Index = "~/Areas/Admin/Views/User/Index.cshtml";
+            public readonly string UserConfirmationByAdmin = "~/Areas/Admin/Views/User/UserConfirmationByAdmin.cshtml";
         }
     }
 
@@ -130,6 +263,18 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DetailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Detail(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Detail);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DetailOverride(callInfo, id);
             return callInfo;
         }
 
@@ -154,6 +299,113 @@ namespace Building.Web.Mvc.Areas.Admin.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ChangePassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "usermodel", usermodel);
             ChangePasswordOverride(callInfo, usermodel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Create()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            CreateOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Building.ViewModels.Account.RegisterViewModel model);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Create(Building.ViewModels.Account.RegisterViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            CreateOverride(callInfo, model);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
+        }
+
+        [NonAction]
+        partial void UserConfirmationByAdminOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string Id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult UserConfirmationByAdmin(string Id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UserConfirmationByAdmin);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "Id", Id);
+            UserConfirmationByAdminOverride(callInfo, Id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void UserConfirmationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult UserConfirmation(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UserConfirmation);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            UserConfirmationOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddProfileOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddProfile(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddProfile);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            AddProfileOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddProfileOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, DomainClasses.Models.Profile profile);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddProfile(DomainClasses.Models.Profile profile)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddProfile);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "profile", profile);
+            AddProfileOverride(callInfo, profile);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CheckUserNameOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string UserName);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult CheckUserName(string UserName)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CheckUserName);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "UserName", UserName);
+            CheckUserNameOverride(callInfo, UserName);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Delete(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteConfirmed(string id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteConfirmedOverride(callInfo, id);
             return callInfo;
         }
 

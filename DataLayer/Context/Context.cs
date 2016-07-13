@@ -25,11 +25,13 @@ namespace DataLayer.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure CompanyProfile & RelatedUser entity
-            modelBuilder.Entity<Profile>()
-                .HasOptional(s => s.RelatedUser) // Mark RelatedUser property optional in CompanyProfile entity
-                .WithOptionalPrincipal(ad => ad.Profile);
-                // mark RelatedUser property as required in CompanyProfile entity. Cannot save CompanyProfile without Student
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOptional(s => s.Profile)
+                .WithRequired(u => u.RelatedUser);
+            base.OnModelCreating(modelBuilder);
+            //         modelBuilder.Entity<Profile>()
+            //.HasRequired(e => e.RelatedUser)
+            //.WithRequiredDependent(u => u.Profile);
 
             modelBuilder.Entity<Profile>()
                 .HasRequired(d => d.MainCategory)
@@ -61,6 +63,8 @@ namespace DataLayer.Context
         public DbSet<UseLocation> UserLocations { set; get; }
         public DbSet<VideoGallery> VideoGalleries { set; get; }
         public DbSet<VideoGalleryFile> VideoGalleryFiles { set; get; }
+        public DbSet<ProfileFile> ProfileFiles { set; get; }
+
 
         public override int SaveChanges()
         {

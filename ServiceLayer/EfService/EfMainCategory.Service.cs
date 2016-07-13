@@ -33,10 +33,20 @@ namespace ServiceLayer.EfService
 
         public void Delete(MainCategory mainCategory)
         {
-            _categories.Remove(mainCategory);
+            if (HasChild(mainCategory.MainCategoryId))
+            {
+                foreach (var child in mainCategory.Children)
+                {
+                    child.MarkAsDelete = true;
+                    //child.ParentId = null;
+                    _categories.AddOrUpdate(child);
+                }
+            }
+            mainCategory.MarkAsDelete = true;
+            //mainCategory.ParentId = null;
         }
 
-        public MainCategory Find(int id)
+        public MainCategory Find(Guid id)
         {
             var unit = _categories.Find(id);
             return unit;
@@ -46,6 +56,16 @@ namespace ServiceLayer.EfService
         {
             var list = _categories.ToList();
             return list;
+        }
+
+        public bool HasChild(Guid id)
+        {
+            var model = _categories.Find(id);
+            if (model.Children.Any())
+            {
+                return true;
+            }
+            return false;
         }
 
         private bool disposed = false;

@@ -44,6 +44,10 @@ namespace T4MVC
     {
         public readonly string Name = "Admin";
         public Building.Web.Mvc.Areas.Admin.Controllers.AddressController Address = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_AddressController();
+        public Building.Web.Mvc.Areas.Admin.Controllers.ArticlesController Articles = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_ArticlesController();
+        public Building.Web.Mvc.Areas.Admin.Controllers.DashboardController Dashboard = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_DashboardController();
+        public Building.Web.Mvc.Areas.Admin.Controllers.MainCategoryController MainCategory = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_MainCategoryController();
+        public Building.Web.Mvc.Areas.Admin.Controllers.ProfileController Profile = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_ProfileController();
         public Building.Web.Mvc.Areas.Admin.Controllers.RoleController Role = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_RoleController();
         public Building.Web.Mvc.Areas.Admin.Controllers.UserController User = new Building.Web.Mvc.Areas.Admin.Controllers.T4MVC_UserController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
@@ -416,6 +420,53 @@ namespace Links
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class jquery_ui_datepicker1_8_14_cc {
+                private const string URLPATH = "~/Content/Plugins/jquery.ui.datepicker1.8.14-cc";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string default_htm = Url("default.htm");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class scripts {
+                    private const string URLPATH = "~/Content/Plugins/jquery.ui.datepicker1.8.14-cc/scripts";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string jquery_1_6_2_min_js = Url("jquery-1.6.2.min.js");
+                    public static readonly string jquery_ui_datepicker_cc_all_min_js = Url("jquery.ui.datepicker-cc.all.min.js");
+                }
+            
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class styles {
+                    private const string URLPATH = "~/Content/Plugins/jquery.ui.datepicker1.8.14-cc/styles";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                    public static class images {
+                        private const string URLPATH = "~/Content/Plugins/jquery.ui.datepicker1.8.14-cc/styles/images";
+                        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                        public static readonly string calendar_png = Url("calendar.png");
+                        public static readonly string ui_bg_flat_30_cccccc_40x100_png = Url("ui-bg_flat_30_cccccc_40x100.png");
+                        public static readonly string ui_bg_flat_50_5c5c5c_40x100_png = Url("ui-bg_flat_50_5c5c5c_40x100.png");
+                        public static readonly string ui_bg_glass_40_ffc73d_1x400_png = Url("ui-bg_glass_40_ffc73d_1x400.png");
+                        public static readonly string ui_bg_highlight_hard_20_0972a5_1x100_png = Url("ui-bg_highlight-hard_20_0972a5_1x100.png");
+                        public static readonly string ui_bg_highlight_soft_33_003147_1x100_png = Url("ui-bg_highlight-soft_33_003147_1x100.png");
+                        public static readonly string ui_bg_highlight_soft_35_222222_1x100_png = Url("ui-bg_highlight-soft_35_222222_1x100.png");
+                        public static readonly string ui_bg_highlight_soft_44_444444_1x100_png = Url("ui-bg_highlight-soft_44_444444_1x100.png");
+                        public static readonly string ui_bg_highlight_soft_80_eeeeee_1x100_png = Url("ui-bg_highlight-soft_80_eeeeee_1x100.png");
+                        public static readonly string ui_bg_loop_25_000000_21x21_png = Url("ui-bg_loop_25_000000_21x21.png");
+                        public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                        public static readonly string ui_icons_4b8e0b_256x240_png = Url("ui-icons_4b8e0b_256x240.png");
+                        public static readonly string ui_icons_a83300_256x240_png = Url("ui-icons_a83300_256x240.png");
+                        public static readonly string ui_icons_cccccc_256x240_png = Url("ui-icons_cccccc_256x240.png");
+                        public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                    }
+                
+                    public static readonly string jquery_ui_1_8_14_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.8.14.min.css") ? Url("jquery-ui-1.8.14.min.css") : Url("jquery-ui-1.8.14.css");
+                }
+            
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class jquery_validetta {
                 private const string URLPATH = "~/Content/Plugins/jquery.validetta";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
@@ -425,6 +476,69 @@ namespace Links
                 public static readonly string validetta_min_css = Url("validetta.min.css");
                 public static readonly string validetta_min_js = Url("validetta.min.js");
                 public static readonly string validettaLang_fa_IR_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/validettaLang-fa-IR.min.js") ? Url("validettaLang-fa-IR.min.js") : Url("validettaLang-fa-IR.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class PersianDatePicker {
+                private const string URLPATH = "~/Content/Plugins/PersianDatePicker";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class css {
+                    private const string URLPATH = "~/Content/Plugins/PersianDatePicker/css";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string PersianDatePicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/PersianDatePicker.min.css") ? Url("PersianDatePicker.min.css") : Url("PersianDatePicker.css");
+                    public static readonly string PersianDatePicker_min_css = Url("PersianDatePicker.min.css");
+                }
+            
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class js {
+                    private const string URLPATH = "~/Content/Plugins/PersianDatePicker/js";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string PersianDatePicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/PersianDatePicker.min.js") ? Url("PersianDatePicker.min.js") : Url("PersianDatePicker.js");
+                    public static readonly string PersianDatePicker_min_js = Url("PersianDatePicker.min.js");
+                }
+            
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class pwDatePicker {
+                private const string URLPATH = "~/Content/Plugins/pwDatePicker";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class css {
+                    private const string URLPATH = "~/Content/Plugins/pwDatePicker/css";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string persian_datepicker_0_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/persian-datepicker-0.4.5.min.css") ? Url("persian-datepicker-0.4.5.min.css") : Url("persian-datepicker-0.4.5.css");
+                    public static readonly string persian_datepicker_0_4_5_min_css = Url("persian-datepicker-0.4.5.min.css");
+                    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                    public static class theme {
+                        private const string URLPATH = "~/Content/Plugins/pwDatePicker/css/theme";
+                        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                        public static readonly string persian_datepicker_blue_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/persian-datepicker-blue.min.css") ? Url("persian-datepicker-blue.min.css") : Url("persian-datepicker-blue.css");
+                        public static readonly string persian_datepicker_cheerup_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/persian-datepicker-cheerup.min.css") ? Url("persian-datepicker-cheerup.min.css") : Url("persian-datepicker-cheerup.css");
+                        public static readonly string persian_datepicker_dark_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/persian-datepicker-dark.min.css") ? Url("persian-datepicker-dark.min.css") : Url("persian-datepicker-dark.css");
+                        public static readonly string persian_datepicker_redblack_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/persian-datepicker-redblack.min.css") ? Url("persian-datepicker-redblack.min.css") : Url("persian-datepicker-redblack.css");
+                    }
+                
+                }
+            
+                public static readonly string index_html = Url("index.html");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class js {
+                    private const string URLPATH = "~/Content/Plugins/pwDatePicker/js";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string persian_date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/persian-date.min.js") ? Url("persian-date.min.js") : Url("persian-date.js");
+                    public static readonly string persian_datepicker_0_4_5_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/persian-datepicker-0.4.5.min.js") ? Url("persian-datepicker-0.4.5.min.js") : Url("persian-datepicker-0.4.5.js");
+                    public static readonly string persian_datepicker_0_4_5_min_js = Url("persian-datepicker-0.4.5.min.js");
+                }
+            
             }
         
         }
@@ -669,6 +783,33 @@ namespace Links
             }
             public static partial class Plugins 
             {
+                public static partial class jquery_ui_datepicker1_8_14_cc 
+                {
+                    public static partial class scripts 
+                    {
+                        public static class Assets
+                        {
+                            public const string jquery_1_6_2_min_js = "~/Content/Plugins/jquery.ui.datepicker1.8.14-cc/scripts/jquery-1.6.2.min.js"; 
+                            public const string jquery_ui_datepicker_cc_all_min_js = "~/Content/Plugins/jquery.ui.datepicker1.8.14-cc/scripts/jquery.ui.datepicker-cc.all.min.js"; 
+                        }
+                    }
+                    public static partial class styles 
+                    {
+                        public static partial class images 
+                        {
+                            public static class Assets
+                            {
+                            }
+                        }
+                        public static class Assets
+                        {
+                            public const string jquery_ui_1_8_14_css = "~/Content/Plugins/jquery.ui.datepicker1.8.14-cc/styles/jquery-ui-1.8.14.css";
+                        }
+                    }
+                    public static class Assets
+                    {
+                    }
+                }
                 public static partial class jquery_validetta 
                 {
                     public static class Assets
@@ -678,6 +819,61 @@ namespace Links
                         public const string validetta_min_css = "~/Content/Plugins/jquery.validetta/validetta.min.css";
                         public const string validetta_min_js = "~/Content/Plugins/jquery.validetta/validetta.min.js"; 
                         public const string validettaLang_fa_IR_js = "~/Content/Plugins/jquery.validetta/validettaLang-fa-IR.js"; 
+                    }
+                }
+                public static partial class PersianDatePicker 
+                {
+                    public static partial class css 
+                    {
+                        public static class Assets
+                        {
+                            public const string PersianDatePicker_css = "~/Content/Plugins/PersianDatePicker/css/PersianDatePicker.css";
+                            public const string PersianDatePicker_min_css = "~/Content/Plugins/PersianDatePicker/css/PersianDatePicker.min.css";
+                        }
+                    }
+                    public static partial class js 
+                    {
+                        public static class Assets
+                        {
+                            public const string PersianDatePicker_js = "~/Content/Plugins/PersianDatePicker/js/PersianDatePicker.js"; 
+                            public const string PersianDatePicker_min_js = "~/Content/Plugins/PersianDatePicker/js/PersianDatePicker.min.js"; 
+                        }
+                    }
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class pwDatePicker 
+                {
+                    public static partial class css 
+                    {
+                        public static partial class theme 
+                        {
+                            public static class Assets
+                            {
+                                public const string persian_datepicker_blue_css = "~/Content/Plugins/pwDatePicker/css/theme/persian-datepicker-blue.css";
+                                public const string persian_datepicker_cheerup_css = "~/Content/Plugins/pwDatePicker/css/theme/persian-datepicker-cheerup.css";
+                                public const string persian_datepicker_dark_css = "~/Content/Plugins/pwDatePicker/css/theme/persian-datepicker-dark.css";
+                                public const string persian_datepicker_redblack_css = "~/Content/Plugins/pwDatePicker/css/theme/persian-datepicker-redblack.css";
+                            }
+                        }
+                        public static class Assets
+                        {
+                            public const string persian_datepicker_0_4_5_css = "~/Content/Plugins/pwDatePicker/css/persian-datepicker-0.4.5.css";
+                            public const string persian_datepicker_0_4_5_min_css = "~/Content/Plugins/pwDatePicker/css/persian-datepicker-0.4.5.min.css";
+                        }
+                    }
+                    public static partial class js 
+                    {
+                        public static class Assets
+                        {
+                            public const string persian_date_js = "~/Content/Plugins/pwDatePicker/js/persian-date.js"; 
+                            public const string persian_datepicker_0_4_5_js = "~/Content/Plugins/pwDatePicker/js/persian-datepicker-0.4.5.js"; 
+                            public const string persian_datepicker_0_4_5_min_js = "~/Content/Plugins/pwDatePicker/js/persian-datepicker-0.4.5.min.js"; 
+                        }
+                    }
+                    public static class Assets
+                    {
                     }
                 }
                 public static class Assets

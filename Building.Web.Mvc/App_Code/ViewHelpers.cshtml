@@ -4,11 +4,26 @@
 
         @helper RenderCategories(IEnumerable<MainCategory> categories)
         {
-                foreach (var category in categories)
-                {
-                            @category.Name
+foreach (var category in categories.Where(c => c.MarkAsDelete != true))
+{
+        <div class="dd-handle">
+            @category.Name
+            <div class="pull-left action-buttons">
+                <a class="jq-btn green" data-url="/Admin/MainCategory/create/@category.MainCategoryId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+
+                    <i class="ace-icon fa fa-plus bigger-130"></i>
+                </a>
+                <a class="jq-btn btn-yellow" data-url="/Admin/MainCategory/Details/@category.MainCategoryId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+                    <i class="ace-icon fa fa-search bigger-130"></i>
+                </a>
+                <a class="jq-btn blue" data-url="/Admin/MainCategory/Edit/@category.MainCategoryId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+                    <i class="ace-icon fa fa-pencil bigger-130"></i>
+                </a>
+            </div>
+        </div>
                             <ol class="dd-list">
                                 @RenderCategoryChildren(category.Children)
+
                             </ol>
 
                 }
@@ -21,7 +36,7 @@
 {
     if (categories != null)
     {
-        foreach (var category in categories)
+        foreach (var category in categories.Where(c=>c.MarkAsDelete != true))
         {
             if (category != null)
             {
@@ -29,19 +44,20 @@
                     <div class="dd-handle">
                         @category.Name
                         <div class="pull-left action-buttons">
-                            <a class="green" href="nestable-list.html#">
-                                <i class="ace-icon fa fa-plus bigger-130"></i>
-                            </a>
-                            <a class="btn-yellow" href="nestable-list.html#">
+                            <a class="jq-btn green" data-url="/Admin/MainCategory/create/@category.MainCategoryId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
+
+                                    <i class="ace-icon fa fa-plus bigger-130"></i>
+                                </a>
+                            <a class="jq-btn btn-yellow" data-url="/Admin/MainCategory/Details/@category.MainCategoryId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                 <i class="ace-icon fa fa-search bigger-130"></i>
                             </a>
-                            <a class="blue" href="nestable-list.html#">
+                            <a class="jq-btn blue" data-url="/Admin/MainCategory/Edit/@category.MainCategoryId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                             </a>
-                            <a class="red" href="nestable-list.html#">
+                            <a class="jq-btn red" data-url="/Admin/MainCategory/Delete/@category.MainCategoryId" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
                             </a>
-                        </div>
+</div>
                     </div>
                     <div class="dd-dev"></div>
                     @if (category.Children.Any())
